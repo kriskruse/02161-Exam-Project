@@ -1,0 +1,4 @@
+example/junit/TestJUnit4AndJUnit5.class
+dtu/examproject/cucumber/CucumberTest.class
+dtu/examproject/cucumber/AddUserTest.class
+dtu/examproject/cucumber/StepDefinitions.class

@@ -1,0 +1,232 @@
+-------------------------------------------------------------------------------
+Test set: dtu.examproject.cucumber.CucumberTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.246 s <<< FAILURE! -- in dtu.examproject.cucumber.CucumberTest
+Add user to system.Add user successfully -- Time elapsed: 0.075 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'there is a user with the initials "Bob"' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("there is a user with the initials {string}")
+public void thereIsAUserWithTheInitials(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user")
+public void theUserRegistersTheUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the user is registered")
+public void theUserIsRegistered() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Add user to system.Register a user that is already registered -- Time elapsed: 0.003 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'a user with the initials "Bob" exists in the system' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a user with the initials {string} exists in the system")
+public void aUserWithTheInitialsExistsInTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user again")
+public void theUserRegistersTheUserAgain() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Add user to system.Register a user when not logged in -- Time elapsed: 0.004 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a user with the initials {string}")
+public void thereIsAUserWithTheInitials(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user")
+public void theUserRegistersTheUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Associate worker with project or activity.The user associates a user with a project activity #1 -- Time elapsed: 0.005 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'a project "Project 1" with activity "Activity 1" exists in the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} with {string}")
+public void theUserAssociatesWith(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("{string} is associated with project {string}")
+public void isAssociatedWithProject(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Associate worker with project or activity.The user associates a user with a project activity #2 -- Time elapsed: 0.005 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'a project "Project 1" with activity "Activity 1" exists in the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} to project {string}'s activity {string}")
+public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("{string} is associated with project {string}'s activity {string}")
+public void isAssociatedWithProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Associate worker with project or activity.The user associates a user with a project activity #3 -- Time elapsed: 0.004 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} with {string}")
+public void theUserAssociatesWith(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Associate worker with project or activity.The user associates a user with a project activity #4 -- Time elapsed: 0.003 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} to project {string}'s activity {string}")
+public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Create a project.Add a project successfully -- Time elapsed: 0.002 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'the user creates a project with the name "Project1"' and 1 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@When("the user creates a project with the name {string}")
+public void theUserCreatesAProjectWithTheName(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("a project with the name {string} is in the system")
+public void aProjectWithTheNameIsInTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Create a project.A not logged in user tries to create a project -- Time elapsed: 0.003 s <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user creates a project with the name {string}")
+public void theUserCreatesAProjectWithTheName(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+

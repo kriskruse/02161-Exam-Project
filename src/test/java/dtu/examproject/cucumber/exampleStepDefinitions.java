@@ -1,11 +1,11 @@
-package example.cucumber;
+package dtu.examproject.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDefinitions {
+public class exampleStepDefinitions {
 
 	@When("I do nothing")
 	public void iDoNothing() {

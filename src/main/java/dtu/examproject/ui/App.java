@@ -1,4 +1,4 @@
-package dtu.example.ui;
+package dtu.examproject.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

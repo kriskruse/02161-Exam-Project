@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dtu.examproject.cucumber.CucumberTest" time="0.246" tests="10" errors="9" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="18"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/kris/Documents/GitHub/02161-Exam-Project/target/test-classes:/Users/kris/.m2/repository/io/cucumber/cucumber-java/7.15.0/cucumber-java-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-core/7.15.0/cucumber-core-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin/7.15.0/cucumber-gherkin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.15.0/cucumber-gherkin-messages-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/kris/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/kris/.m2/repository/io/cucumber/tag-expressions/6.0.0/tag-expressions-6.0.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-expressions/17.0.1/cucumber-expressions-17.0.1.jar:/Users/kris/.m2/repository/io/cucumber/datatable/7.15.0/datatable-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-plugin/7.15.0/cucumber-plugin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/docstring/7.15.0/docstring-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/kris/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/kris/.m2/repository/io/cucumber/ci-environment/10.0.0/ci-environment-10.0.0.jar:/Users/kris/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-junit/7.15.0/cucumber-junit-7.15.0.jar:/Users/kris/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/kris/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-picocontainer/7.15.0/cucumber-picocontainer-7.15.0.jar:/Users/kris/.m2/repository/org/picocontainer/picocontainer/2.15/picocontainer-2.15.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/kris/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/kris/.m2/repository/org/junit/vintage/junit-vintage-engine/5.10.2/junit-vintage-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-runner/1.10.2/junit-platform-runner-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-api/1.10.2/junit-platform-suite-api-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.10.2/junit-platform-suite-commons-1.10.2.jar:/Users/kris/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar:/Users/kris/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-controls/23-ea+3/javafx-controls-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-graphics/23-ea+3/javafx-graphics-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-base/23-ea+3/javafx-base-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-fxml/23-ea+3/javafx-fxml-23-ea+3.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="18"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="DK"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-18.0.2.1.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/kris/Documents/GitHub/02161-Exam-Project/target/surefire 2024-04-15T10-53-04_146-jvmRun1 surefire-20240415105305256_1tmp surefire_0-20240415105305256_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/kris/Documents/GitHub/02161-Exam-Project/target/test-classes:/Users/kris/.m2/repository/io/cucumber/cucumber-java/7.15.0/cucumber-java-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-core/7.15.0/cucumber-core-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin/7.15.0/cucumber-gherkin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.15.0/cucumber-gherkin-messages-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/kris/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/kris/.m2/repository/io/cucumber/tag-expressions/6.0.0/tag-expressions-6.0.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-expressions/17.0.1/cucumber-expressions-17.0.1.jar:/Users/kris/.m2/repository/io/cucumber/datatable/7.15.0/datatable-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-plugin/7.15.0/cucumber-plugin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/docstring/7.15.0/docstring-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/kris/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/kris/.m2/repository/io/cucumber/ci-environment/10.0.0/ci-environment-10.0.0.jar:/Users/kris/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-junit/7.15.0/cucumber-junit-7.15.0.jar:/Users/kris/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/kris/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-picocontainer/7.15.0/cucumber-picocontainer-7.15.0.jar:/Users/kris/.m2/repository/org/picocontainer/picocontainer/2.15/picocontainer-2.15.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/kris/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/kris/.m2/repository/org/junit/vintage/junit-vintage-engine/5.10.2/junit-vintage-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-runner/1.10.2/junit-platform-runner-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-api/1.10.2/junit-platform-suite-api-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.10.2/junit-platform-suite-commons-1.10.2.jar:/Users/kris/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar:/Users/kris/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-controls/23-ea+3/javafx-controls-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-graphics/23-ea+3/javafx-graphics-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-base/23-ea+3/javafx-base-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-fxml/23-ea+3/javafx-fxml-23-ea+3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/kris"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="jdk.module.path" value="/Users/kris/Documents/GitHub/02161-Exam-Project/target/classes:/Users/kris/.m2/repository/org/openjfx/javafx-controls/23-ea+3/javafx-controls-23-ea+3-mac-aarch64.jar:/Users/kris/.m2/repository/org/openjfx/javafx-graphics/23-ea+3/javafx-graphics-23-ea+3-mac-aarch64.jar:/Users/kris/.m2/repository/org/openjfx/javafx-base/23-ea+3/javafx-base-23-ea+3-mac-aarch64.jar:/Users/kris/.m2/repository/org/openjfx/javafx-fxml/23-ea+3/javafx-fxml-23-ea+3-mac-aarch64.jar"/>
+    <property name="java.version.date" value="2022-08-18"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-18.0.2.1.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/kris/Documents/GitHub/02161-Exam-Project"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar:/Users/kris/Documents/GitHub/02161-Exam-Project/target/test-classes:/Users/kris/.m2/repository/io/cucumber/cucumber-java/7.15.0/cucumber-java-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-core/7.15.0/cucumber-core-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin/7.15.0/cucumber-gherkin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.15.0/cucumber-gherkin-messages-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/gherkin/26.2.0/gherkin-26.2.0.jar:/Users/kris/.m2/repository/io/cucumber/messages/22.0.0/messages-22.0.0.jar:/Users/kris/.m2/repository/io/cucumber/tag-expressions/6.0.0/tag-expressions-6.0.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-expressions/17.0.1/cucumber-expressions-17.0.1.jar:/Users/kris/.m2/repository/io/cucumber/datatable/7.15.0/datatable-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-plugin/7.15.0/cucumber-plugin-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/docstring/7.15.0/docstring-7.15.0.jar:/Users/kris/.m2/repository/io/cucumber/html-formatter/20.4.0/html-formatter-20.4.0.jar:/Users/kris/.m2/repository/io/cucumber/junit-xml-formatter/0.2.0/junit-xml-formatter-0.2.0.jar:/Users/kris/.m2/repository/io/cucumber/ci-environment/10.0.0/ci-environment-10.0.0.jar:/Users/kris/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-junit/7.15.0/cucumber-junit-7.15.0.jar:/Users/kris/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/kris/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/kris/.m2/repository/io/cucumber/cucumber-picocontainer/7.15.0/cucumber-picocontainer-7.15.0.jar:/Users/kris/.m2/repository/org/picocontainer/picocontainer/2.15/picocontainer-2.15.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-engine/1.10.2/junit-platform-engine-1.10.2.jar:/Users/kris/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar:/Users/kris/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar:/Users/kris/.m2/repository/org/junit/vintage/junit-vintage-engine/5.10.2/junit-vintage-engine-5.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-runner/1.10.2/junit-platform-runner-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.2/junit-platform-launcher-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-api/1.10.2/junit-platform-suite-api-1.10.2.jar:/Users/kris/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.10.2/junit-platform-suite-commons-1.10.2.jar:/Users/kris/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy/1.14.12/byte-buddy-1.14.12.jar:/Users/kris/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.12/byte-buddy-agent-1.14.12.jar:/Users/kris/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-controls/23-ea+3/javafx-controls-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-graphics/23-ea+3/javafx-graphics-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-base/23-ea+3/javafx-base-23-ea+3.jar:/Users/kris/.m2/repository/org/openjfx/javafx-fxml/23-ea+3/javafx-fxml-23-ea+3.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/surefire-junit4/3.2.5/surefire-junit4-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/common-junit3/3.2.5/common-junit3-3.2.5.jar:/Users/kris/.m2/repository/org/apache/maven/surefire/common-junit4/3.2.5/common-junit4-3.2.5.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="18.0.2.1+1-1"/>
+    <property name="user.name" value="kris"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.4.1"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/kris/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/0y/jcr11cvx62z1ybv1p0lycbtr0000gn/T/"/>
+    <property name="idea.version" value="2024.1"/>
+    <property name="java.version" value="18.0.2.1"/>
+    <property name="user.dir" value="/Users/kris/Documents/GitHub/02161-Exam-Project"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="US-ASCII"/>
+    <property name="java.library.path" value="/Users/kris/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="18.0.2.1+1-1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="62.0"/>
+  </properties>
+  <testcase name="Add user successfully" classname="Add user to system" time="0.075">
+    <error message="The step &apos;there is a user with the initials &quot;Bob&quot;&apos; and 2 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;there is a user with the initials {string}&quot;)&#10;public void thereIsAUserWithTheInitials(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user registers the user&quot;)&#10;public void theUserRegistersTheUser() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the user is registered&quot;)&#10;public void theUserIsRegistered() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'there is a user with the initials "Bob"' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("there is a user with the initials {string}")
+public void thereIsAUserWithTheInitials(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user")
+public void theUserRegistersTheUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the user is registered")
+public void theUserIsRegistered() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="Register a user that is already registered" classname="Add user to system" time="0.003">
+    <error message="The step &apos;a user with the initials &quot;Bob&quot; exists in the system&apos; and 2 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;a user with the initials {string} exists in the system&quot;)&#10;public void aUserWithTheInitialsExistsInTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user registers the user again&quot;)&#10;public void theUserRegistersTheUserAgain() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the error message {string} is given&quot;)&#10;public void theErrorMessageIsGiven(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'a user with the initials "Bob" exists in the system' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a user with the initials {string} exists in the system")
+public void aUserWithTheInitialsExistsInTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user again")
+public void theUserRegistersTheUserAgain() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="Register a user when not logged in" classname="Add user to system" time="0.004">
+    <error message="The step &apos;the user is not logged into the system&apos; and 3 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the user is not logged into the system&quot;)&#10;public void theUserIsNotLoggedIntoTheSystem() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;there is a user with the initials {string}&quot;)&#10;public void thereIsAUserWithTheInitials(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user registers the user&quot;)&#10;public void theUserRegistersTheUser() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the error message {string} is given&quot;)&#10;public void theErrorMessageIsGiven(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("there is a user with the initials {string}")
+public void thereIsAUserWithTheInitials(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user registers the user")
+public void theUserRegistersTheUser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="The user associates a user with a project activity #1" classname="Associate worker with project or activity" time="0.005">
+    <error message="The step &apos;a project &quot;Project 1&quot; with activity &quot;Activity 1&quot; exists in the system&apos; and 3 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;a project {string} with activity {string} exists in the system&quot;)&#10;public void aProjectWithActivityExistsInTheSystem(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;{string} is a registered user of the system&quot;)&#10;public void isARegisteredUserOfTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user associates {string} with {string}&quot;)&#10;public void theUserAssociatesWith(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;{string} is associated with project {string}&quot;)&#10;public void isAssociatedWithProject(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'a project "Project 1" with activity "Activity 1" exists in the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} with {string}")
+public void theUserAssociatesWith(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("{string} is associated with project {string}")
+public void isAssociatedWithProject(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="The user associates a user with a project activity #2" classname="Associate worker with project or activity" time="0.005">
+    <error message="The step &apos;a project &quot;Project 1&quot; with activity &quot;Activity 1&quot; exists in the system&apos; and 3 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;a project {string} with activity {string} exists in the system&quot;)&#10;public void aProjectWithActivityExistsInTheSystem(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;{string} is a registered user of the system&quot;)&#10;public void isARegisteredUserOfTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user associates {string} to project {string}&apos;s activity {string}&quot;)&#10;public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;{string} is associated with project {string}&apos;s activity {string}&quot;)&#10;public void isAssociatedWithProjectSActivity(String string, String string2, String string3) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'a project "Project 1" with activity "Activity 1" exists in the system' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} to project {string}'s activity {string}")
+public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("{string} is associated with project {string}'s activity {string}")
+public void isAssociatedWithProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="The user associates a user with a project activity #3" classname="Associate worker with project or activity" time="0.004">
+    <error message="The step &apos;the user is not logged into the system&apos; and 4 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the user is not logged into the system&quot;)&#10;public void theUserIsNotLoggedIntoTheSystem() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;a project {string} with activity {string} exists in the system&quot;)&#10;public void aProjectWithActivityExistsInTheSystem(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;{string} is a registered user of the system&quot;)&#10;public void isARegisteredUserOfTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user associates {string} with {string}&quot;)&#10;public void theUserAssociatesWith(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the error message {string} is given&quot;)&#10;public void theErrorMessageIsGiven(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} with {string}")
+public void theUserAssociatesWith(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="The user associates a user with a project activity #4" classname="Associate worker with project or activity" time="0.003">
+    <error message="The step &apos;the user is not logged into the system&apos; and 4 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the user is not logged into the system&quot;)&#10;public void theUserIsNotLoggedIntoTheSystem() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;a project {string} with activity {string} exists in the system&quot;)&#10;public void aProjectWithActivityExistsInTheSystem(String string, String string2) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Given(&quot;{string} is a registered user of the system&quot;)&#10;public void isARegisteredUserOfTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user associates {string} to project {string}&apos;s activity {string}&quot;)&#10;public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the error message {string} is given&quot;)&#10;public void theErrorMessageIsGiven(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("a project {string} with activity {string} exists in the system")
+public void aProjectWithActivityExistsInTheSystem(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("{string} is a registered user of the system")
+public void isARegisteredUserOfTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user associates {string} to project {string}'s activity {string}")
+public void theUserAssociatesToProjectSActivity(String string, String string2, String string3) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="Add a project successfully" classname="Create a project" time="0.002">
+    <error message="The step &apos;the user creates a project with the name &quot;Project1&quot;&apos; and 1 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@When(&quot;the user creates a project with the name {string}&quot;)&#10;public void theUserCreatesAProjectWithTheName(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;a project with the name {string} is in the system&quot;)&#10;public void aProjectWithTheNameIsInTheSystem(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'the user creates a project with the name "Project1"' and 1 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@When("the user creates a project with the name {string}")
+public void theUserCreatesAProjectWithTheName(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("a project with the name {string} is in the system")
+public void aProjectWithTheNameIsInTheSystem(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="A not logged in user tries to create a project" classname="Create a project" time="0.003">
+    <error message="The step &apos;the user is not logged into the system&apos; and 2 other step(s) are undefined.&#10;You can implement these steps using the snippet(s) below:&#10;&#10;@Given(&quot;the user is not logged into the system&quot;)&#10;public void theUserIsNotLoggedIntoTheSystem() {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@When(&quot;the user creates a project with the name {string}&quot;)&#10;public void theUserCreatesAProjectWithTheName(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;@Then(&quot;the error message {string} is given&quot;)&#10;public void theErrorMessageIsGiven(String string) {&#10;    // Write code here that turns the phrase above into concrete actions&#10;    throw new io.cucumber.java.PendingException();&#10;}&#10;" type="io.cucumber.junit.UndefinedStepException"><![CDATA[io.cucumber.junit.UndefinedStepException: 
+The step 'the user is not logged into the system' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user is not logged into the system")
+public void theUserIsNotLoggedIntoTheSystem() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user creates a project with the name {string}")
+public void theUserCreatesAProjectWithTheName(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the error message {string} is given")
+public void theErrorMessageIsGiven(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+]]></error>
+  </testcase>
+  <testcase name="example scenario" classname="example feature" time="0.005"/>
+</testsuite>
