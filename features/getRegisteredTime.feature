@@ -7,7 +7,7 @@ Feature: Get registered time
     And a project "Project 1" with activity "Activity 1" exists in the system
     And a project "Project 2" with activity "Activity 2" exists in the system
     And the user sets their hours spent on activity "Activity 1" to "5" hours in the project "Project 1"
-    And the user sets their hours spent on activity "Activity 2" to "5" hours  in the project "Project 2"
+    And the user sets their hours spent on activity "Activity 2" to "5" hours in the project "Project 2"
     When the user requests their registered time
     Then "10" hours is returned
 

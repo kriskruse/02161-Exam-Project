@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class GetRegisteredTimeTest {
-    @When("the user sets their hours spent on activity {string} to {string} hours in the project {string}")
+    @And("the user sets their hours spent on activity {string} to {string} hours in the project {string}")
     public void theUserSetsTheirHoursSpentOnActivityToHoursInTheProject(String arg0, String arg1, String arg2) {
     }
 
