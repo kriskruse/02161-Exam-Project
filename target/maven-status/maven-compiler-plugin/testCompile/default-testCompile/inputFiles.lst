@@ -1,4 +1,14 @@
 /Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/AddUserTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/AddUserToProjectFeatureTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/CreateProjectTest.java
 /Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/CucumberTest.java
-/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/StepDefinitions.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/ErrorMessageHolder.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/GetRegisteredTimeTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SeeAvaliableHoursTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SeeDistributionOfRegisteredHoursTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SetActivityHourBudgetTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SetEditActivityTimeUsedTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SetProjectActivitiesTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SetProjectLeadTest.java
+/Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/cucumber/SetStartEndTimeTest.java
 /Users/kris/Documents/GitHub/02161-Exam-Project/src/test/java/dtu/examproject/junit/TestJUnit4AndJUnit5.java
