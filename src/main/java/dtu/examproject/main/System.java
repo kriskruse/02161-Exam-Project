@@ -2,6 +2,8 @@ package dtu.examproject.main;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 public class System {
 
@@ -22,6 +24,27 @@ public class System {
     public String getActiveUser() {return activeUser;}
 
 
+
+    public void registerHours(String projectName, String activityName, String employee, double hours) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!userExists(employee)) throw new Exception("User does not exist");
+        else if (!projectExists(projectName)) throw new Exception("Project does not exist");
+        else getProject(projectName).registerHours(activityName, employee, hours);
+    }
+
+    public void setProjectLead(String projectName, String user) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!userExists(user)) throw new Exception("User does not exist");
+        else if (!projectExists(projectName)) throw new Exception("Project does not exist");
+        else getProject(projectName).setProjectLead(user);
+    }
+
+
+    public void setActivityHourBudget(String projectName, String activityName, int budget) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(projectName)) throw new Exception("Project does not exist");
+        else getProject(projectName).setActivityHourBudget(activityName, budget);
+    }
 
     public void addUser(String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
@@ -69,4 +92,76 @@ public class System {
     }
 
 
+    public void createActivity(String project, String activity) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else getProject(project).createActivity(activity);
+    }
+
+    public void setActivityStart(String project, String activity, int start) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else getProject(project).getActivity(activity).setStartDate(start);
+    }
+
+    public void setActivityEnd(String project, String activity, int end) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else getProject(project).getActivity(activity).setEndDate(end);
+    }
+
+    public int getActivityStart(String project, String activity) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else return getProject(project).getActivity(activity).getStartDate();
+
+    }
+    public int getActivityEnd(String project, String activity) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else return getProject(project).getActivity(activity).getEndDate();
+    }
+
+    public void associateEmployeeWithActivity(String project, String activity, String user) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!userExists(user)) throw new Exception("User does not exist");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (!getProject(project).activityExists(activity)) throw new Exception("Activity does not exist");
+        else if (!userIsAssociatedWithProject(project, user)) throw new Exception("User is not associated with project");
+        else getProject(project).getActivity(activity).addEmployee(user);
+
+    }
+
+    public List<String> getAssociatedEmployees(String project) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (!Objects.equals(activeUser, getProject(project).getProjectLead())) throw new Exception("User does not have the required permissions to do that");
+        else return getProject(project).getAvalibleEmployees();
+    }
+
+    public Map<Activity, Double> getHourDistribution(String project) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (!Objects.equals(activeUser, getProject(project).getProjectLead()))
+            throw new Exception("User does not have the required permissions to do that");
+        else return getProject(project).getHourDistribution();
+    }
+
+
+    public void getRegisteredTime(String user) throws Exception {
+        if (!loggedIn()) throw new Exception("User is not logged in");
+        else if (!userExists(user)) throw new Exception("User does not exist");
+        else {
+            double hours = 0;
+            for (Project p : projectList) {
+                for (Activity a : p.getActivities()) {
+                    try {
+                        hours += a.getEmployeeHours(user);
+                    } catch (Exception e) {
+                        // Do nothing
+                    }
+                }
+            }
+        }
+    }
 }

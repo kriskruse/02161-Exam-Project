@@ -7,6 +7,12 @@ public class Registry {
     private Calendar date;
     private double hours;
 
+public Registry(String employee, double hours) {
+        this.employee = employee;
+        this.date = Calendar.getInstance();
+        this.hours = hours;
+    }
+
     public void setEmployee(String employee) {this.employee = employee;}
     public String getEmployee() {return this.employee;}
     public void setDate(Calendar date) {this.date = date;}

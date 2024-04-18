@@ -30,19 +30,36 @@ public class Activity {
     public double getTotalHours() {return totalHours;}
     public void addToTotalHours(double hours) {this.totalHours += hours;}
     public Boolean isAssociated(String user) {return associatedEmployees.contains(user);}
-
+    public Boolean hasRegisteredHours(String user) {return registeredHours.stream().anyMatch(r -> r.getEmployee().equals(user));}
 
     public void addEmployee(String user) {
         associatedEmployees.add(user);
     }
 
-    public void registerHours() throws Exception {
-        throw new Exception("Not Implemented");
+    public void registerHours(String employee, double hours) throws Exception {
+        // find employee and register hours
+        if (!associatedEmployees.contains(employee))
+            throw new Exception("Employee is not associated with this activity");
+        else if (hasRegisteredHours(employee))
+            throw new Exception("Employee has already registered hours for this activity");
+        else
+            registeredHours.add(new Registry(employee, hours));
     }
 
-    public void getEmployeeHours() throws Exception {
-        throw new Exception("Not Implemented");
+    public double getEmployeeHours(String employee) throws Exception {
+        // find employee and return hours
+        if (!associatedEmployees.contains(employee))
+            throw new Exception("Employee is not associated with this activity");
+        else if (!hasRegisteredHours(employee))
+            throw new Exception("Employee has not registered hours for this activity");
+        else
+            return
+                registeredHours.stream()
+                    .filter(r -> r.getEmployee().equals(employee))
+                    .mapToDouble(Registry::getHours)
+                    .sum();
     }
+
 
 
 }

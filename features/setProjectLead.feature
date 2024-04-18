@@ -14,7 +14,7 @@ Feature: Set project lead
     And a project "Project 1" exist in the system
     And "Bob" is a registered user of the system
     When a user sets "Bob" as the project lead of "Project 1"
-    Then the error message "User not logged in" is given
+    Then the error message "User is not logged in" is given
 
   Scenario: Add a project lead when the project does not exist
     Given the user is logged into the system
@@ -28,4 +28,4 @@ Feature: Set project lead
     And a project "Project 1" does not exist in the system
     And "Bob" is not a registered user of the system
     When a user sets "Bob" as the project lead of "Project 1"
-    Then the error message "Bob is not a registered user of the system" is given
+    Then the error message "User does not exist" is given
