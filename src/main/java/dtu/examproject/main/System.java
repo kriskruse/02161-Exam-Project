@@ -43,6 +43,9 @@ public class System {
     public void setActivityHourBudget(String projectName, String activityName, int budget) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(projectName)) throw new Exception("Project does not exist");
+        else if (!getProject(projectName).activityExists(activityName)) throw new Exception("Activity does not exist");
+        else if (!Objects.equals(activeUser, getProject(projectName).getProjectLead()))
+            throw new Exception("User does not have the required permissions to do that");
         else getProject(projectName).setActivityHourBudget(activityName, budget);
     }
 
@@ -95,6 +98,9 @@ public class System {
     public void createActivity(String project, String activity) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (getProject(project).activityExists(activity)) throw new Exception("Activity already exists");
+        else if (!Objects.equals(activeUser, getProject(project).getProjectLead()))
+            throw new Exception("User does not have the required permissions to do that");
         else getProject(project).createActivity(activity);
     }
 

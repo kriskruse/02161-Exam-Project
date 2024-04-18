@@ -18,8 +18,10 @@ Feature: Set activity hour budget
   Scenario: Set activity hour budget when not project lead
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system
+    And a user with the initials "Bob" exists in the system
+    And "Bob" is the project lead of project "Project 1"
     When the user sets the hour budget as 20 for activity "Activity 1" in the project "Project 1"
-    Then the error "User does not have the required permissions to do that" is given
+    Then the error message "User does not have the required permissions to do that" is given
 
   Scenario: Set activity hour budget when not logged in
     Given the user is not logged into the system

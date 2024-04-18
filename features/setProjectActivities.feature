@@ -19,6 +19,7 @@ Feature: Set the activities of a project
   Scenario: The user is not the project lead and tries to create activities for a project
     Given the user is logged into the system
     And a project "Project 1" exist in the system
+    And a user with the initials "Bob" exists in the system
     And "Bob" is the project lead of project "Project 1"
     When the user creates the activity "Activity 1" in the project "Project 1"
-    Then the error "User does not have the required permissions to do that" is given
+    Then the error message "User does not have the required permissions to do that" is given
