@@ -107,6 +107,7 @@ public class System {
     public void setActivityStart(String project, String activity, int start) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (!(Objects.equals(getProject(project).getProjectLead(), activeUser))) throw new Exception("User does not have the required permissions to do that");
         else getProject(project).getActivity(activity).setStartDate(start);
     }
 
@@ -154,7 +155,7 @@ public class System {
     }
 
 
-    public void getRegisteredTime(String user) throws Exception {
+    public double getRegisteredTime(String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!userExists(user)) throw new Exception("User does not exist");
         else {
@@ -168,6 +169,7 @@ public class System {
                     }
                 }
             }
+            return hours;
         }
     }
 }

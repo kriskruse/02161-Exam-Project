@@ -13,4 +13,4 @@ Feature: Set the start/end time of an activity
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system
     When the user sets the start time to week 10 and end time to week 12 for activity "Activity 1" in project "Project 1"
-    Then the error "User does not have the required permissions to do that" is given
+    Then the error message "User does not have the required permissions to do that" is given
