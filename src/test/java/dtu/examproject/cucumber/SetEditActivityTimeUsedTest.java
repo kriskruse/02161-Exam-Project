@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.Calendar;
+
 import static org.junit.Assert.assertEquals;
 
 public class SetEditActivityTimeUsedTest {
@@ -18,10 +20,11 @@ public class SetEditActivityTimeUsedTest {
     }
 
 
-    @When("the user sets their hours spent on activity {string} for project {string} to {double} hours")
+    @When("the user sets their hours spent today on activity {string} for project {string} to {double} hours")
     public void theUserSetsTheirHoursSpentOnActivityToHours(String activity, String project, double hours) {
         try {
-            system.registerHours(project, activity, admin, hours);
+            Calendar today = Calendar.getInstance();
+            system.registerHours(project, activity, admin, today, hours);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -30,7 +33,7 @@ public class SetEditActivityTimeUsedTest {
     @Then("{double} hours are registered on activity {string} for project {string}")
     public void hoursAreRegisteredOnActivity(double hours, String activity, String project) {
         try {
-            assertEquals(hours, system.getProject(project).getActivity(activity).getEmployeeHours(admin), 0.01);
+            assertEquals(hours, system.getProject(project).getActivity(activity).getTotalEmployeeHours(admin), 0.01);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
 
 public class Project {
 
@@ -28,12 +29,12 @@ public class Project {
     public List<Activity> getActivities() {return activities;}
     public List<String> getAssociatedEmployees() {return associatedEmployees;}
 
-    public void registerHours(String activityName, String employee, double hours) throws Exception {
+    public void registerHours(String activityName, String employee, Calendar date, double hours) throws Exception {
         if (!activityExists(activityName))
             throw new Exception("Activity does not exist");
         else if (!isAssociated(employee))
             throw new Exception("Employee is not associated with this project");
-        else getActivity(activityName).registerHours(employee, hours);
+        else getActivity(activityName).registerHours(employee, date, hours);
     }
 
     public void setActivityHourBudget(String activityName, int budget) throws Exception {

@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ public class SeeDistributionOfRegisteredHoursTest {
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
     private Map<Activity, Double> hourDistribution;
+    private final Calendar date = Calendar.getInstance();
 
     public SeeDistributionOfRegisteredHoursTest(System system, ErrorMessageHolder errorMessage) {
         this.system = system;
@@ -24,9 +26,9 @@ public class SeeDistributionOfRegisteredHoursTest {
     }
 
     @And("{string} has hours registered on activity {string} of the project {string}")
-    public void hasHoursRegisteredOnActivity(String employee, String activity, String project) {
+    public void hasHoursRegisteredTodayOnActivity(String employee, String activity, String project) {
         try {
-            system.registerHours(project, activity, employee, 10);
+            system.registerHours(project, activity, employee, date, 8);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
+import java.util.Calendar;
+
 public class System {
 
     private List<String> userList = new ArrayList<>();
@@ -25,11 +27,11 @@ public class System {
 
 
 
-    public void registerHours(String projectName, String activityName, String employee, double hours) throws Exception {
+    public void registerHours(String projectName, String activityName, String employee, Calendar date, double hours) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!userExists(employee)) throw new Exception("User does not exist");
         else if (!projectExists(projectName)) throw new Exception("Project does not exist");
-        else getProject(projectName).registerHours(activityName, employee, hours);
+        else getProject(projectName).registerHours(activityName, employee, date, hours);
     }
 
     public void setProjectLead(String projectName, String user) throws Exception {
@@ -165,7 +167,7 @@ public class System {
             for (Project p : projectList) {
                 for (Activity a : p.getActivities()) {
                     try {
-                        hours += a.getEmployeeHours(user);
+                        hours += a.getTotalEmployeeHours(user);
                     } catch (Exception e) {
                         // Do nothing
                     }

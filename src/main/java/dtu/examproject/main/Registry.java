@@ -7,9 +7,9 @@ public class Registry {
     private Calendar date;
     private double hours;
 
-public Registry(String employee, double hours) {
+public Registry(String employee, Calendar date, double hours) {
         this.employee = employee;
-        this.date = Calendar.getInstance();
+        this.date = date;
         this.hours = hours;
     }
 
