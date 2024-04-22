@@ -8,6 +8,9 @@ import io.cucumber.java.en.When;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class SeeAvaliableHoursTest {
     private System system;
     private String admin = "admn";
@@ -66,7 +69,7 @@ public class SeeAvaliableHoursTest {
         List<String> expected = List.of(avemp1, avemp2);
         // we need to check that both lists contain the same elements
         // since the order of the elements may differ
-        assert availableEmployees.containsAll(expected) && expected.containsAll(availableEmployees);
+        assertEquals(expected, availableEmployees);
 
     }
 

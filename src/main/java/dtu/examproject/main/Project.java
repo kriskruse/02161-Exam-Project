@@ -15,6 +15,7 @@ public class Project {
 
     public Project(String projectName) {
         this.projectName = projectName;
+        this.projectLead = "";
     }
 
     public String getProjectName() {return this.projectName;}

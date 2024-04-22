@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+
 public class AddUserToProjectFeatureTest {
     private System system;
     private ErrorMessageHolder errorMessageHolder;
@@ -48,7 +50,7 @@ public class AddUserToProjectFeatureTest {
     @Then("{string} is associated with project {string}")
     public void isAssociatedWithProject(String user, String project) {
         try {
-            assert system.getProject(project).isAssociated(user);
+            assertTrue(system.getProject(project).isAssociated(user));
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -66,7 +68,7 @@ public class AddUserToProjectFeatureTest {
     @Then("{string} is associated with project {string}'s activity {string}")
     public void isAssociatedWithProjectSActivity(String user, String project, String activity) {
         try {
-            assert system.getProject(project).getActivity(activity).isAssociated(user);
+            assertTrue(system.getProject(project).getActivity(activity).isAssociated(user));
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }

@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+
 public class SetProjectActivitiesTest {
     private System system;
     private String admin = "admn";
@@ -26,7 +28,7 @@ public class SetProjectActivitiesTest {
 
     @Then("project {string} has the activity {string}")
     public void projectHasTheActivity(String project, String activity) {
-        assert system.getProject(project).activityExists(activity);
+        assertTrue(system.getProject(project).activityExists(activity));
     }
 
     @And("project {string} has no project lead")

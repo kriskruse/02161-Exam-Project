@@ -99,6 +99,8 @@ public class System {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (getProject(project).activityExists(activity)) throw new Exception("Activity already exists");
+        else if (getProject(project).getProjectLead().isEmpty())
+            getProject(project).createActivity(activity);
         else if (!Objects.equals(activeUser, getProject(project).getProjectLead()))
             throw new Exception("User does not have the required permissions to do that");
         else getProject(project).createActivity(activity);

@@ -9,6 +9,9 @@ import io.cucumber.java.en.When;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 public class SeeDistributionOfRegisteredHoursTest {
     private System system;
     private String admin = "admn";
@@ -41,6 +44,6 @@ public class SeeDistributionOfRegisteredHoursTest {
     @Then("the distribution of hour registrations is given")
     public void theDistributionOfHourRegistrationsIsGiven() {
         // TODO: find a way to assert the hour distribution better
-        assert hourDistribution != null;
+        assertNotNull(hourDistribution);
     }
 }
