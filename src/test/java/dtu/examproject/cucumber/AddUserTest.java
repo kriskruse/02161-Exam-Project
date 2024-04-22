@@ -67,4 +67,17 @@ public class AddUserTest {
     }
 
 
+    @When("{string} logs into the system")
+    public void logsIntoTheSystem(String user) {
+        try {
+            system.login(user);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @Then("{string} is logged into the system")
+    public void isLoggedIntoTheSystem(String user) {
+        assertEquals(user, system.getActiveUser());
+    }
 }

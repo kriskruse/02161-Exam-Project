@@ -7,6 +7,18 @@ Feature: Add user to system
     When the user registers the user "Bob"
     Then the user "Bob" is registered
 
+  Scenario: User logs in
+    Given the user is logged into the system
+    And "Bob" is a registered user of the system
+    And the user is not logged into the system
+    When "Bob" logs into the system
+    Then "Bob" is logged into the system
+
+  Scenario: User logs in but is not registered
+    Given "Bob" is not a registered user of the system
+    When "Bob" logs into the system
+    Then the error message "Cannot login as unregistered user" is given
+
   Scenario: Register a user that is already registered
     Given the user is logged into the system
     And a user with the initials "Bob" exists in the system

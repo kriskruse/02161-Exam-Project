@@ -15,6 +15,13 @@ Feature: Set activity hour budget
     When the user sets the hour budget as 20 for activity "Activity 1" in the project "Project 1"
     Then the error message "Project does not exist" is given
 
+  Scenario: Set an activity hour budget for an activity that does not exist
+    Given the user is logged into the system
+    And a project "Project 1" exists in the system
+    And the user is the project lead of project "Project 1"
+    When the user sets the hour budget as 20 for activity "Activity 1" in the project "Project 1"
+    Then the error message "Activity does not exist" is given
+
   Scenario: Set activity hour budget when not project lead
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system

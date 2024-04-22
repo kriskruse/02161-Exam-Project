@@ -17,9 +17,7 @@ public class Activity {
     public Activity(String activityName) {
         this.title = activityName;
     }
-
     public String getTitle() {return this.title;}
-    public void setTitle(String title) {this.title = title;}
     public int getStartDate() {return this.startDate;}
     public void setStartDate(int startDate) {this.startDate = startDate;}
     public int getEndDate() {return this.endDate;}
@@ -27,21 +25,19 @@ public class Activity {
     public int getBudgetedHours() {return budgetedHours;}
     public void setBudgetedHours(int budgetedHours) {this.budgetedHours = budgetedHours;}
     public double getTotalHours() {return totalHours;}
-    public void addToTotalHours(double hours) {this.totalHours += hours;}
+
     public Boolean isAssociated(String user) {return associatedEmployees.contains(user);}
     public void addEmployee(String user) {
         associatedEmployees.add(user);
     }
 
     public Boolean hasRegisteredHours(Calendar date, String user) {
-        return registeredHours.stream().anyMatch(r -> r.getDate().equals(date) && r.getEmployee().equals(user));
-    }
+        return registeredHours.stream().anyMatch(r -> r.getDate().equals(date) && r.getEmployee().equals(user));}
     public Boolean hasAnyRegisteredHours(String user) {
         return registeredHours.stream().anyMatch(r -> r.getEmployee().equals(user));
     }
 
     public void registerHours(String employee, Calendar date, double hours) throws Exception {
-        // find employee and register hours
         if (!associatedEmployees.contains(employee))
             throw new Exception("Employee is not associated with this activity");
         else if (hasRegisteredHours(date, employee))
@@ -55,26 +51,11 @@ public class Activity {
             registeredHours.add(new Registry(employee, date, hours));
     }
 
-    public double getEmployeeHours(Calendar date, String employee) throws Exception {
-        // find employee and return hours
-        if (!associatedEmployees.contains(employee))
-            throw new Exception("Employee is not associated with this activity");
-        else if (!hasRegisteredHours(date, employee))
-            throw new Exception("Employee has not registered hours for this activity");
-        else
-            return
-                registeredHours.stream()
-                    .filter(r -> r.getDate().equals(date) && r.getEmployee().equals(employee))
-                    .mapToDouble(Registry::getHours)
-                    .sum();
-    }
 
     public double getTotalEmployeeHours(String employee) throws Exception {
         // find employee and return hours
         if (!associatedEmployees.contains(employee))
             throw new Exception("Employee is not associated with this activity");
-        else if (!hasAnyRegisteredHours(employee))
-            throw new Exception("Employee has not registered hours for this activity");
         else
             return
                 registeredHours.stream()

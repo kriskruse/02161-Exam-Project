@@ -1,7 +1,6 @@
 package dtu.examproject.main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Calendar;
@@ -20,14 +19,12 @@ public class Project {
     }
 
     public String getProjectName() {return this.projectName;}
-    public void setProjectName(String projectName) {this.projectName = projectName;}
     public String getProjectLead() {return this.projectLead;}
     public void setProjectLead(String projectLead) {this.projectLead = projectLead;}
     public Boolean activityExists(String activityName) {return activities.stream().anyMatch(a -> a.getTitle().equals(activityName));}
     public Activity getActivity(String activityName) {return activities.stream().filter(a -> a.getTitle().equals(activityName)).findFirst().get();}
     public Boolean isAssociated(String user) {return associatedEmployees.contains(user);}
     public List<Activity> getActivities() {return activities;}
-    public List<String> getAssociatedEmployees() {return associatedEmployees;}
 
     public void registerHours(String activityName, String employee, Calendar date, double hours) throws Exception {
         if (!activityExists(activityName))
@@ -53,7 +50,7 @@ public class Project {
 
     public Map<Activity, Double> getHourDistribution() throws Exception {
         if (activities.isEmpty())
-            return null;
+            throw new Exception("No activities in project");
         else {
             return activities.stream().collect(
                 java.util.stream.Collectors.toMap(

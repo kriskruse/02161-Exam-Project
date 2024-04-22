@@ -28,6 +28,11 @@ public class System {
 
 
     public void registerHours(String projectName, String activityName, String employee, Calendar date, double hours) throws Exception {
+        // change precision of calendar object to day
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!userExists(employee)) throw new Exception("User does not exist");
         else if (!projectExists(projectName)) throw new Exception("Project does not exist");
@@ -45,7 +50,6 @@ public class System {
     public void setActivityHourBudget(String projectName, String activityName, int budget) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(projectName)) throw new Exception("Project does not exist");
-        else if (!getProject(projectName).activityExists(activityName)) throw new Exception("Activity does not exist");
         else if (!Objects.equals(activeUser, getProject(projectName).getProjectLead()))
             throw new Exception("User does not have the required permissions to do that");
         else getProject(projectName).setActivityHourBudget(activityName, budget);
@@ -169,7 +173,7 @@ public class System {
                     try {
                         hours += a.getTotalEmployeeHours(user);
                     } catch (Exception e) {
-                        // Do nothing
+                        hours += 0;
                     }
                 }
             }

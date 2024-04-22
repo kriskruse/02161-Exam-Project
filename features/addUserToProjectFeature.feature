@@ -29,3 +29,10 @@ Feature: Associate worker with project or activity
     And "Bob" is a registered user of the system
     When the user associates "Bob" to project "Project 1"'s activity "Activity 1"
     Then the error message "User is not logged in" is given
+
+  Scenario: Add user to activity that does not exist
+    Given the user is logged into the system
+    And a project "Project 1" exists in the system
+    And "Bob" is a registered user of the system
+    When the user associates "Bob" to project "Project 1"'s activity "Activity 1"
+    Then the error message "Activity does not exist" is given

@@ -68,7 +68,7 @@ public class AddUserToProjectFeatureTest {
     @Then("{string} is associated with project {string}'s activity {string}")
     public void isAssociatedWithProjectSActivity(String user, String project, String activity) {
         try {
-            assertTrue(system.getProject(project).getActivity(activity).isAssociated(user));
+            assertTrue(system.userIsAssociatedWithActivity(project, activity, user));
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }

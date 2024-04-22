@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SeeAvaliableHoursTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jacoco.exec</a> &gt; <a href="index.source.html" class="el_package">dtu.examproject.cucumber</a> &gt; <span class="el_source">SeeAvaliableHoursTest.java</span></div><h1>SeeAvaliableHoursTest.java</h1><pre class="source lang-java linenums">package dtu.examproject.cucumber;
+
+import dtu.examproject.main.System;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class SeeAvaliableHoursTest {
+    private System system;
+<span class="fc" id="L16">    private String admin = &quot;admn&quot;;</span>
+    private ErrorMessageHolder errorMessage;
+    private List&lt;String&gt; availableEmployees;
+
+<span class="fc" id="L20">    public SeeAvaliableHoursTest(System system, ErrorMessageHolder errorMessage) {</span>
+<span class="fc" id="L21">        this.system = system;</span>
+<span class="fc" id="L22">        this.errorMessage = errorMessage;</span>
+<span class="fc" id="L23">    }</span>
+
+
+    @And(&quot;the user is the project lead of {string}&quot;)
+    public void theUserIsTheProjectLeadOf(String project) {
+        try {
+<span class="fc" id="L29">            system.setProjectLead(project, admin);</span>
+<span class="nc" id="L30">        } catch (Exception e) {</span>
+<span class="nc" id="L31">            errorMessage.setErrorMessage(e.getMessage());</span>
+<span class="fc" id="L32">        }</span>
+<span class="fc" id="L33">    }</span>
+
+    @And(&quot;there are employees named {string} {string} and {string} associated with project {string}&quot;)
+    public void thereAreEmployeesNamedAndAssociatedWithProject(String emp1, String emp2, String emp3, String project) {
+        try {
+<span class="fc" id="L38">            system.addUser(emp1);</span>
+<span class="fc" id="L39">            system.addUser(emp2);</span>
+<span class="fc" id="L40">            system.addUser(emp3);</span>
+<span class="fc" id="L41">            system.getProject(project).addEmployee(emp1);</span>
+<span class="fc" id="L42">            system.getProject(project).addEmployee(emp2);</span>
+<span class="fc" id="L43">            system.getProject(project).addEmployee(emp3);</span>
+<span class="nc" id="L44">        } catch (Exception e) {</span>
+<span class="nc" id="L45">            errorMessage.setErrorMessage(e.getMessage());</span>
+<span class="fc" id="L46">        }</span>
+<span class="fc" id="L47">    }</span>
+
+    @And(&quot;the employee {string} is associated with activity {string} in project {string}&quot;)
+    public void theEmployeeIsAssociatedWithActivity(String employee, String activity, String project) {
+        try {
+<span class="fc" id="L52">            system.associateEmployeeWithActivity(project, activity, employee);</span>
+<span class="nc" id="L53">        } catch (Exception e) {</span>
+<span class="nc" id="L54">            errorMessage.setErrorMessage(e.getMessage());</span>
+<span class="fc" id="L55">        }</span>
+<span class="fc" id="L56">    }</span>
+
+    @When(&quot;the user checks for available employees in project {string}&quot;)
+    public void theUserChecksForAvailableEmployees(String project) {
+        try {
+<span class="fc" id="L61">            availableEmployees = system.getAssociatedEmployees(project);</span>
+<span class="fc" id="L62">        } catch (Exception e) {</span>
+<span class="fc" id="L63">            errorMessage.setErrorMessage(e.getMessage());</span>
+<span class="fc" id="L64">        }</span>
+<span class="fc" id="L65">    }</span>
+
+    @Then(&quot;the employees {string} and {string} are returned&quot;)
+    public void theEmployeesAndAreReturned(String avemp1, String avemp2) {
+<span class="fc" id="L69">        List&lt;String&gt; expected = List.of(avemp1, avemp2);</span>
+        // we need to check that both lists contain the same elements
+        // since the order of the elements may differ
+<span class="fc" id="L72">        assertEquals(expected, availableEmployees);</span>
+
+<span class="fc" id="L74">    }</span>
+
+    @And(&quot;the user is not the project lead of {string}&quot;)
+    public void theUserIsNotTheProjectLeadOf(String project) {
+        try {
+<span class="nc" id="L79">            system.setProjectLead(project, &quot;&quot;);</span>
+<span class="fc" id="L80">        } catch (Exception e) {</span>
+<span class="fc" id="L81">            errorMessage.setErrorMessage(e.getMessage());</span>
+<span class="nc" id="L82">        }</span>
+
+<span class="fc" id="L84">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

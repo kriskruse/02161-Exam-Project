@@ -13,17 +13,19 @@ public class SetEditActivityTimeUsedTest {
     private System system;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
+    private Calendar today;
 
     public SetEditActivityTimeUsedTest(System system, ErrorMessageHolder errorMessage) {
         this.system = system;
         this.errorMessage = errorMessage;
+        this.today = Calendar.getInstance();
     }
 
 
     @When("the user sets their hours spent today on activity {string} for project {string} to {double} hours")
     public void theUserSetsTheirHoursSpentOnActivityToHours(String activity, String project, double hours) {
         try {
-            Calendar today = Calendar.getInstance();
+
             system.registerHours(project, activity, admin, today, hours);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());

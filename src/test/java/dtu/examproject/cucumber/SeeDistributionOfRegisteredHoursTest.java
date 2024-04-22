@@ -18,7 +18,6 @@ public class SeeDistributionOfRegisteredHoursTest {
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
     private Map<Activity, Double> hourDistribution;
-    private final Calendar date = Calendar.getInstance();
 
     public SeeDistributionOfRegisteredHoursTest(System system, ErrorMessageHolder errorMessage) {
         this.system = system;
@@ -27,6 +26,7 @@ public class SeeDistributionOfRegisteredHoursTest {
 
     @And("{string} has hours registered on activity {string} of the project {string}")
     public void hasHoursRegisteredTodayOnActivity(String employee, String activity, String project) {
+        Calendar date = Calendar.getInstance();
         try {
             system.registerHours(project, activity, employee, date, 8);
         } catch (Exception e) {
