@@ -16,8 +16,12 @@ public class TimeRegistration {
     public Boolean loggedIn() {return !activeUser.isEmpty();}
     public void logout() {activeUser = "";}
     public Boolean userExists(String user) {return userList.contains(user);}
-    public Boolean projectExists(String projectName) {return projectList.stream().anyMatch(p -> p.getProjectName().equals(projectName));}
-    public Project getProject(String projectName) {return projectList.stream().filter(p -> p.getProjectName().equals(projectName)).findFirst().get();}
+    public Boolean projectExists(String projectName) {return projectList.stream()
+            .anyMatch(p -> p.getProjectName().equals(projectName));}
+    public Project getProject(String projectName) {return projectList.stream()
+            .filter(p -> p.getProjectName().equals(projectName))
+            .findFirst()
+            .get();}
     public List<Project> getProjectList() {return projectList;}
     public String getActiveUser() {return activeUser;}
 
@@ -30,7 +34,8 @@ public class TimeRegistration {
         return projectNames;
     }
 
-    public void registerHours(String projectName, String activityName, String employee, Calendar date, double hours) throws Exception {
+    public void registerHours(String projectName, String activityName,
+                              String employee, Calendar date, double hours) throws Exception {
         // change precision of calendar object to day
         date.set(Calendar.HOUR_OF_DAY, 0);
         date.set(Calendar.MINUTE, 0);
@@ -61,7 +66,8 @@ public class TimeRegistration {
     public void addUser(String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (userList.contains(user)) throw new Exception("A user with those initials already exists");
-        else if (user.length() > userNameMaxCharLim) throw new Exception("User initials must be less than " + (userNameMaxCharLim + 1) + " characters long");
+        else if (user.length() > userNameMaxCharLim)
+            throw new Exception("User initials must be less than " + (userNameMaxCharLim + 1) + " characters long");
         else userList.add(user);
     }
 
