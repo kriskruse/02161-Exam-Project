@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +16,7 @@ public class SeeAvaliableHoursTest {
     private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
-    private Set<String> availableEmployees;
+    private Map<String, Double> availableEmployees;
 
     public SeeAvaliableHoursTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
         this.timeRegistration = timeRegistration;
@@ -58,7 +59,7 @@ public class SeeAvaliableHoursTest {
     @When("the user checks for available employees in project {string}")
     public void theUserChecksForAvailableEmployees(String project) {
         try {
-            availableEmployees = timeRegistration.getAssociatedEmployees(project);
+            availableEmployees = timeRegistration.getAvailableEmployees(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -66,10 +67,10 @@ public class SeeAvaliableHoursTest {
 
     @Then("the employees {string} and {string} are returned")
     public void theEmployeesAndAreReturned(String avemp1, String avemp2) {
-        List<String> expected = List.of(avemp1, avemp2);
+        Set<String> expected = Set.of(avemp1, avemp2);
         // we need to check that both lists contain the same elements
         // since the order of the elements may differ
-        assertEquals(expected, availableEmployees);
+        assertEquals(expected, availableEmployees.keySet());
 
     }
 

@@ -146,7 +146,7 @@ public class TimeRegistration {
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (!getProject(project).activityExists(activity)) throw new Exception("Activity does not exist");
         else if (!userIsAssociatedWithProject(project, user)) throw new Exception("User is not associated with project");
-        else getProject(project).getActivity(activity).addEmployee(user);
+        else getProject(project).addEmployeeToActivity(activity, user);
 
     }
 

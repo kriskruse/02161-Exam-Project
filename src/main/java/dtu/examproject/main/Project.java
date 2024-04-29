@@ -55,16 +55,12 @@ public class Project {
     }
 
     public Map<Activity, Double> getHourDistribution() throws Exception {
-        if (activities.isEmpty())
-            throw new Exception("No activities in project");
-        else {
-            return activities.stream().collect(
-                java.util.stream.Collectors.toMap(
-                    a -> a,
-                        Activity::getTotalHours
-                )
-            );
-        }
+        return activities.stream().collect(
+            java.util.stream.Collectors.toMap(
+                a -> a,
+                    Activity::getTotalHours
+            )
+        );
     }
 
     public Map<String,Double> getAvailableEmployees() throws Exception {
@@ -73,7 +69,7 @@ public class Project {
         else {
             Map<String,Double> availableEmployees = new HashMap<>();
             for (String employee : associatedEmployees) {
-                if(!(getActivity(sickness).isAssociated(employee) && getActivity(vacation).isAssociated(employee))) {
+                if(!(getActivity(sickness).isAssociated(employee) || getActivity(vacation).isAssociated(employee))) {
                     availableEmployees.put(employee, getRegisteredTime(employee));
                 }
             }
