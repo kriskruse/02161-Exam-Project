@@ -1,7 +1,5 @@
 package dtu.examproject.main;
 
-import io.cucumber.java.ca.Cal;
-
 import java.util.*;
 
 public class Project {
