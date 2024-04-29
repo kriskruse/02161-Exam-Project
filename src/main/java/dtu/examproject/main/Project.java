@@ -63,14 +63,14 @@ public class Project {
         );
     }
 
-    public Map<String,Double> getAvailableEmployees() throws Exception {
+    public Map<String,Double> getAvailableEmployees(int startWeek, int endWeek) throws Exception {
         if (activities.isEmpty()) throw new Exception("No activities in project");
         else if (associatedEmployees.isEmpty()) throw new Exception("No employees associated with project");
         else {
             Map<String,Double> availableEmployees = new HashMap<>();
             for (String employee : associatedEmployees) {
-                if(!(getActivity(sickness).isAssociated(employee) || getActivity(vacation).isAssociated(employee))) {
-                    availableEmployees.put(employee, getRegisteredTime(employee));
+                if(!(getActivity(sickness).isAssociated(employee) && getActivity(vacation).isAssociated(employee))) {
+                    availableEmployees.put(employee, getRegisteredTime(employee, startWeek, endWeek));
                 }
             }
             return availableEmployees;

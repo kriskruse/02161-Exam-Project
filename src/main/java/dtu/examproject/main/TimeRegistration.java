@@ -150,11 +150,12 @@ public class TimeRegistration {
 
     }
 
-    public Map<String, Double> getAvailableEmployees(String project) throws Exception {
+    public Set<String> getAvailableEmployees(String project, int startWeek, int endWeek) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
+        else if (startWeek > endWeek) throw new Exception("Invalid week interval");
         else if (!Objects.equals(activeUser, getProject(project).getProjectLead())) throw new Exception("User does not have the required permissions to do that");
-        else return getProject(project).getAvailableEmployees();
+        else return getProject(project).getAvailableEmployees(startWeek, endWeek);
     }
 
     public Map<Activity, Double> getHourDistribution(String project) throws Exception {
