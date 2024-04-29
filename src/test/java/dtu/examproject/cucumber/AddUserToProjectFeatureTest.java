@@ -22,7 +22,7 @@ public class AddUserToProjectFeatureTest {
     public void aProjectWithActivityExistsInTheSystem(String projectName, String activityName) throws Exception {
         try {
             timeRegistration.createProject(projectName);
-            timeRegistration.addActivityToProject(projectName, activityName);
+            timeRegistration.createActivity(projectName, activityName);
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }

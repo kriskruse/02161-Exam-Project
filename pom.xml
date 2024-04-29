@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dtu</groupId>
 	<artifactId>ExamProject</artifactId>
-	<version>0.1</version>
+	<version>1.0.0</version>
 
 	<properties>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -60,8 +60,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
 		</plugins>
 	</build>
 	<dependencies>
@@ -117,5 +115,6 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>23-ea+3</version>
 		</dependency>
+
 	</dependencies>
 </project>

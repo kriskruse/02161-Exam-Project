@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,7 +15,7 @@ public class SeeAvaliableHoursTest {
     private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
-    private List<String> availableEmployees;
+    private Set<String> availableEmployees;
 
     public SeeAvaliableHoursTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
         this.timeRegistration = timeRegistration;
