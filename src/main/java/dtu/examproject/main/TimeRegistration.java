@@ -7,6 +7,7 @@ public class TimeRegistration {
     private List<String> userList = new ArrayList<>();
     private List<Project> projectList = new ArrayList<>();
     private String activeUser = "";
+    private final int userNameMaxCharLim = 4;
 
     public TimeRegistration(){
         this.userList.add("admn"); // Add a admin user as default
@@ -60,7 +61,7 @@ public class TimeRegistration {
     public void addUser(String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (userList.contains(user)) throw new Exception("A user with those initials already exists");
-        else if (user.length() != 4) throw new Exception("User initials must be 4 characters long");
+        else if (user.length() > userNameMaxCharLim) throw new Exception("User initials must be less than " + (userNameMaxCharLim + 1) + " characters long");
         else userList.add(user);
     }
 
