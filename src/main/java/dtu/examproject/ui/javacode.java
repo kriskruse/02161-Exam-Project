@@ -208,10 +208,10 @@ public class javacode extends JFrame implements ActionListener {
 
     // --------------------------------------------------- WORKER BUTTON ACTIONS
     // -------------------------------------------------------
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == bWorkerFunctions) {
+    public void actionPerformed(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == bWorkerFunctions) {
             System.exit(0);
-        } else if (e.getSource() == bAddUser) {
+        } else if (actionEvent.getSource() == bAddUser) {
 
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
@@ -235,7 +235,7 @@ public class javacode extends JFrame implements ActionListener {
                 }
             });
 
-        } else if (e.getSource() == bSetProjectLead) {
+        } else if (actionEvent.getSource() == bSetProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -252,14 +252,14 @@ public class javacode extends JFrame implements ActionListener {
                             try {
                                 system.setProjectLead(name1, name2);
                             } catch (Exception e) {
-                                System.out.println(e);
+                                System.out.println(e.getMessage());
                             }
                             txtarea.append("Set: " + name2 + " as the leader of the project " + name1 + "\n");
                         }
                     }
                 }
             });
-        } else if (e.getSource() == bSelectActivityTimeUsed) {
+        } else if (actionEvent.getSource() == bSelectActivityTimeUsed) {
             /*
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
@@ -289,7 +289,7 @@ public class javacode extends JFrame implements ActionListener {
                     }
                 }
             });*/
-        } else if (e.getSource() == bGetRegisteredTime) {
+        } else if (actionEvent.getSource() == bGetRegisteredTime) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -309,7 +309,7 @@ public class javacode extends JFrame implements ActionListener {
                     }
                 }
             });
-        } else if (e.getSource() == bAddUserToActivity) {
+        } else if (actionEvent.getSource() == bAddUserToActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -340,7 +340,7 @@ public class javacode extends JFrame implements ActionListener {
                 }
             });
 
-        } else if (e.getSource() == bAddActivity) {
+        } else if (actionEvent.getSource() == bAddActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -366,7 +366,7 @@ public class javacode extends JFrame implements ActionListener {
                     }
                 }
             });
-        } else if (e.getSource() == bAddProject) {
+        } else if (actionEvent.getSource() == bAddProject) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -389,7 +389,7 @@ public class javacode extends JFrame implements ActionListener {
         }
         // ------------------------------------------------ PROJECT LEAD BUTTON ACTIONS
         // ----------------------------------------------------
-        else if (e.getSource() == bSetNewProjectLead) {
+        else if (actionEvent.getSource() == bSetNewProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -416,7 +416,7 @@ public class javacode extends JFrame implements ActionListener {
             });
         }
 
-        else if (e.getSource() == bSetStartEndTime) {
+        else if (actionEvent.getSource() == bSetStartEndTime) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
@@ -456,7 +456,7 @@ public class javacode extends JFrame implements ActionListener {
             });
         }
 
-        else if (e.getSource() == bSeeDistributionOfHours) {
+        else if (actionEvent.getSource() == bSeeDistributionOfHours) {
 
 
             SwingUtilities.invokeLater(new Runnable() {
@@ -486,7 +486,7 @@ public class javacode extends JFrame implements ActionListener {
             });
         }
 
-        else if (e.getSource() == bSeeAvalibleUsers) {
+        else if (actionEvent.getSource() == bSeeAvalibleUsers) {
             /*
              * try {
              * system.addUser("User1");
@@ -524,7 +524,7 @@ public class javacode extends JFrame implements ActionListener {
 
         }
 
-        else if (e.getSource() == bSetActivityHourBudget) {
+        else if (actionEvent.getSource() == bSetActivityHourBudget) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame();
