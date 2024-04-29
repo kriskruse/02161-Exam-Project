@@ -1,11 +1,6 @@
 package dtu.examproject.main;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
-
-import java.util.Calendar;
+import java.util.*;
 
 public class TimeRegistration {
 
@@ -71,12 +66,6 @@ public class TimeRegistration {
         else if (projectExists(projectName)) throw new Exception("A project with that name already exists");
         else projectList.add(new Project(projectName));
     }
-    
-    public void addActivityToProject(String projectName, String activityName) throws Exception {
-        if (!loggedIn()) throw new Exception("User is not logged in");
-        else if (!projectExists(projectName)) throw new Exception("Project does not exist");
-        else getProject(projectName).createActivity(activityName);
-    }
 
     public void addUserToProject(String projectName, String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
@@ -104,7 +93,6 @@ public class TimeRegistration {
     public void createActivity(String project, String activity) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
-        else if (getProject(project).activityExists(activity)) throw new Exception("Activity already exists");
         else if (getProject(project).getProjectLead().isEmpty())
             getProject(project).createActivity(activity);
         else if (!Objects.equals(activeUser, getProject(project).getProjectLead()))
@@ -147,11 +135,11 @@ public class TimeRegistration {
 
     }
 
-    public List<String> getAssociatedEmployees(String project) throws Exception {
+    public Set<String> getAssociatedEmployees(String project) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (!Objects.equals(activeUser, getProject(project).getProjectLead())) throw new Exception("User does not have the required permissions to do that");
-        else return getProject(project).getAvalibleEmployees();
+        else return getProject(project).getAssociatedEmployees();
     }
 
     public Map<Activity, Double> getHourDistribution(String project) throws Exception {
@@ -169,13 +157,8 @@ public class TimeRegistration {
         else {
             double hours = 0;
             for (Project p : projectList) {
-                for (Activity a : p.getActivities()) {
-                    try {
-                        hours += a.getTotalEmployeeHours(user);
-                    } catch (Exception e) {
-                        hours += 0;
-                    }
-                }
+                hours += p.getRegisteredTime(user);
+
             }
             return hours;
         }

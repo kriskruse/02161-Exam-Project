@@ -15,7 +15,7 @@ public class javacode extends JFrame implements ActionListener {
     public static TimeRegistration system = new TimeRegistration();
     private static final long serialVersionUID = 1L;
     // worker buttons
-    public JButton bWorkerFunctions, bAddUser, bSetProjectLead, bSetProjectActivities, bSelectActivityTimeUsed,
+    public JButton bWorkerFunctions, bAddUser, bSetProjectLead, bSelectActivityTimeUsed,
             bGetRegisteredTime, bAddUserToActivity, bAddActivity, bAddProject; // Buttons
     // project lead buttons
     public JButton bSetActivityHourBudget, bSeeAvalibleUsers, bSeeDistributionOfHours, bSetStartEndTime,
@@ -54,12 +54,6 @@ public class javacode extends JFrame implements ActionListener {
         bSetProjectLead.addActionListener(this);
         bSetProjectLead.setMaximumSize(btnsize);
         bSetProjectLead.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Same for the last button
-        bSetProjectActivities = new JButton("Add Activity to Project");
-        bSetProjectActivities.addActionListener(this);
-        bSetProjectActivities.setMaximumSize(btnsize);
-        bSetProjectActivities.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Same for the last button
         bSelectActivityTimeUsed = new JButton("Select Activity Time Used");
@@ -136,15 +130,11 @@ public class javacode extends JFrame implements ActionListener {
          * p1.add(Box.createRigidArea(new Dimension(110, 5)));
          * // Add second button
          */
-        p1.add(bAddUser);
+        p1.add(bAddProject);
         // Filler
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         // Add third button
-        p1.add(bSetProjectLead);
-        // Filler
-        p1.add(Box.createRigidArea(new Dimension(110, 5)));
-        // Add final button
-        p1.add(bSetProjectActivities);
+        p1.add(bAddActivity);
         // Filler
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         // Add final button
@@ -160,11 +150,12 @@ public class javacode extends JFrame implements ActionListener {
         // Filler
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         // Add final button
-        p1.add(bAddActivity);
+        p1.add(bSetProjectLead);
         // Filler
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         // Add final button
-        p1.add(bAddProject);
+        p1.add(bAddUser);
+
         // Create a container (JPanel) to hold the first four buttons
         JPanel p2 = new JPanel();
         p2.setLayout(new BoxLayout(p2, BoxLayout.PAGE_AXIS));
@@ -199,7 +190,7 @@ public class javacode extends JFrame implements ActionListener {
         getContentPane().add(p1, BorderLayout.WEST);
         System.out.print("here now and username is ");
         System.out.println(username);
-        if (username.equals("admin")) {
+        if (username.equals("admn")) {
             System.out.println("login as admin");
             getContentPane().add(p2, BorderLayout.EAST);
         }
@@ -213,6 +204,7 @@ public class javacode extends JFrame implements ActionListener {
         txtfld = new JTextField(40);
 
     }
+
 
     // --------------------------------------------------- WORKER BUTTON ACTIONS
     // -------------------------------------------------------
@@ -263,28 +255,6 @@ public class javacode extends JFrame implements ActionListener {
                                 System.out.println(e);
                             }
                             txtarea.append("Set: " + name2 + " as the leader of the project " + name1 + "\n");
-                        }
-                    }
-                }
-            });
-        } else if (e.getSource() == bSetProjectActivities) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-                    bSetProjectActivitiesMethod dialog = new bSetProjectActivitiesMethod(frame);
-                    dialog.setVisible(true);
-                    String name = dialog.getName();
-                    bSetProjectActivitiesMethod dialog2 = new bSetProjectActivitiesMethod(frame);
-                    dialog2.setVisible(true);
-                    String name2 = dialog.getName();
-                    if (name != null) {
-                        try {
-                            system.addActivityToProject(name, name2);
-                            txtarea.append("Added activity : " + name2 + " to project "+name+"\n");
-                        } catch (Exception e) {
-                            txtarea.append(e+"\n");
                         }
                     }
                 }
@@ -388,7 +358,7 @@ public class javacode extends JFrame implements ActionListener {
                                 system.createActivity(name1, name2);
                                 txtarea.append("Created activity: " + name2 + " in the project " + name1 + "\n");
                             } catch (Exception e) {
-                                System.out.println(e);
+                                System.out.println(e.getMessage());
                                 txtarea.append(e + "\n");
                             }
 
@@ -401,18 +371,18 @@ public class javacode extends JFrame implements ActionListener {
                 public void run() {
                     JFrame frame = new JFrame();
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
                     bAddProjectMethod dialog = new bAddProjectMethod(frame);
+
                     dialog.setVisible(true);
                     String name = dialog.getName();
                     if (name != null) {
                         try {
                             system.createProject(name);
+                            txtarea.append("Created project: " + name + "\n");
                         } catch (Exception e) {
-                            System.out.println(e);
+                            System.out.println(e.getMessage());
+                            txtarea.append(e + "\n");
                         }
-                        txtarea.append("Created project: " + name + "\n");
-
                     }
                 }
             });
@@ -543,8 +513,8 @@ public class javacode extends JFrame implements ActionListener {
                 List<Project> projects = system.getProjectList();
                 System.out.println("Available Employees:");
                 for (Project project : projects) {
-                    List<String> availableEmployees = project.getAvalibleEmployees();
-                    for (String employee : availableEmployees) {
+                    Map<String,Double> availableEmployees = project.getAvailableEmployees();
+                    for (String employee : availableEmployees.keySet()) {
                         txtarea.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
                     }
                 }
@@ -619,16 +589,15 @@ public class javacode extends JFrame implements ActionListener {
             simplegui.setVisible(true);
             JOptionPane.showMessageDialog(simplegui, "Logged in as: " + username);
             try {
+                system.login("admn");
                 system.addUser(username);
-            } catch (Exception ee) {
-                System.out.println(ee);
-            }
-            try {
+                system.logout();
                 system.login(username);
-            } catch (Exception eee) {
-                System.out.println(eee);
+            } catch (Exception excep) {
+                System.out.println(excep.getMessage());
             }
-            system.loggedIn();
+            if (system.loggedIn()){System.out.println("logged in");}
+            else{System.out.println("not logged in");}
         };
 
         loginButton.addActionListener(loginAction);

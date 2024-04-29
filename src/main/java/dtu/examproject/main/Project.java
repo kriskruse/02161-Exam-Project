@@ -1,29 +1,30 @@
 package dtu.examproject.main;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Calendar;
+import java.util.*;
 
 public class Project {
 
     private String projectName;
     private List<Activity> activities = new ArrayList<>();
-    private List<String> associatedEmployees = new ArrayList<>();
+    private Set<String> associatedEmployees = new HashSet<>();
     private String projectLead;
-
+    private String sickness = "Sickness";
+    private String vacation = "Vacation";
 
     public Project(String projectName) {
         this.projectName = projectName;
         this.projectLead = "";
+        this.activities.add(new Activity(sickness));
+        this.activities.add(new Activity(vacation));
     }
 
+    public Set<String> getAssociatedEmployees() {return associatedEmployees;}
     public String getProjectName() {return this.projectName;}
     public String getProjectLead() {return this.projectLead;}
     public void setProjectLead(String projectLead) {this.projectLead = projectLead;}
     public Boolean activityExists(String activityName) {return activities.stream().anyMatch(a -> a.getTitle().equals(activityName));}
     public Activity getActivity(String activityName) {return activities.stream().filter(a -> a.getTitle().equals(activityName)).findFirst().get();}
-    public Boolean isAssociated(String user) {return associatedEmployees.contains(user);}
+    public Boolean isAssociated(String employee) {return associatedEmployees.contains(employee);}
     public List<Activity> getActivities() {return activities;}
 
     public void registerHours(String activityName, String employee, Calendar date, double hours) throws Exception {
@@ -40,12 +41,13 @@ public class Project {
         else getActivity(activityName).setBudgetedHours(budget);
     }
 
-    public void createActivity(String activityName) {
-        activities.add(new Activity(activityName));
+    public void createActivity(String activity) throws Exception{
+        if (activityExists(activity)) throw new Exception("Activity already exists");
+        else activities.add(new Activity(activity));
     }
 
-    public void addEmployee(String user) {
-        associatedEmployees.add(user);
+    public void addEmployee(String employee) {
+        associatedEmployees.add(employee);
     }
 
     public Map<Activity, Double> getHourDistribution() throws Exception {
@@ -61,20 +63,41 @@ public class Project {
         }
     }
 
-    public List<String> getAvalibleEmployees() throws Exception {
-        List<String> avalibleEmployees = new ArrayList<>();
-        for (String employee : associatedEmployees) {
-            if (activities.stream().noneMatch(a -> a.isAssociated(employee)))
-                avalibleEmployees.add(employee);
+    public Map<String,Double> getAvailableEmployees() throws Exception {
+        if (activities.isEmpty()) throw new Exception("No activities in project");
+        else if (associatedEmployees.isEmpty()) throw new Exception("No employees associated with project");
+        else {
+            Map<String,Double> availableEmployees = new HashMap<>();
+            for (String employee : associatedEmployees) {
+                if (activities.stream().noneMatch(a -> a.isAssociated(employee)))
+                    if(!(getActivity(sickness).isAssociated(employee) && getActivity(vacation).isAssociated(employee))) {
+
+                        availableEmployees.put(employee, getRegisteredTime(employee));
+                    }
+            }
+            return availableEmployees;
         }
-        return avalibleEmployees;
     }
 
-    public void addEmployeeToActivity(String activityName, String user) throws Exception {
+    public void addEmployeeToActivity(String activityName, String employee) throws Exception {
         if (!activityExists(activityName))
             throw new Exception("Activity does not exist");
-        else getActivity(activityName).addEmployee(user);
+        else {
+            getActivity(activityName).addEmployee(employee);
+            addEmployee(employee);
+        }
     }
 
 
+    public double getRegisteredTime(String employee) {
+        double hours = 0;
+        for (Activity a : getActivities()) {
+            try {
+                hours += a.getTotalEmployeeHours(employee);
+            } catch (Exception e) {
+                hours += 0;
+            }
+        }
+        return hours;
+    }
 }

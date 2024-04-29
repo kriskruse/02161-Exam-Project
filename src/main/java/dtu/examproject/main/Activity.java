@@ -64,7 +64,4 @@ public class Activity {
                     .mapToDouble(Registry::getHours)
                     .sum();
     }
-
-
-
 }
