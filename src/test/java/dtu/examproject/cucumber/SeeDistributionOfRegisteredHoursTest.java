@@ -1,26 +1,25 @@
 package dtu.examproject.cucumber;
 
 import dtu.examproject.main.Activity;
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class SeeDistributionOfRegisteredHoursTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
     private Map<Activity, Double> hourDistribution;
 
-    public SeeDistributionOfRegisteredHoursTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public SeeDistributionOfRegisteredHoursTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
@@ -28,7 +27,7 @@ public class SeeDistributionOfRegisteredHoursTest {
     public void hasHoursRegisteredTodayOnActivity(String employee, String activity, String project) {
         Calendar date = Calendar.getInstance();
         try {
-            system.registerHours(project, activity, employee, date, 8);
+            timeRegistration.registerHours(project, activity, employee, date, 8);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -37,7 +36,7 @@ public class SeeDistributionOfRegisteredHoursTest {
     @When("the user gets hour distribution for project {string}")
     public void theUserGetsHourRegistrationForActivityOfTheProject(String project) {
         try {
-            hourDistribution = system.getHourDistribution(project);
+            hourDistribution = timeRegistration.getHourDistribution(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

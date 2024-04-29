@@ -1,8 +1,7 @@
 package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -12,13 +11,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SeeAvaliableHoursTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
     private List<String> availableEmployees;
 
-    public SeeAvaliableHoursTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public SeeAvaliableHoursTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
@@ -26,7 +25,7 @@ public class SeeAvaliableHoursTest {
     @And("the user is the project lead of {string}")
     public void theUserIsTheProjectLeadOf(String project) {
         try {
-            system.setProjectLead(project, admin);
+            timeRegistration.setProjectLead(project, admin);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -35,12 +34,12 @@ public class SeeAvaliableHoursTest {
     @And("there are employees named {string} {string} and {string} associated with project {string}")
     public void thereAreEmployeesNamedAndAssociatedWithProject(String emp1, String emp2, String emp3, String project) {
         try {
-            system.addUser(emp1);
-            system.addUser(emp2);
-            system.addUser(emp3);
-            system.getProject(project).addEmployee(emp1);
-            system.getProject(project).addEmployee(emp2);
-            system.getProject(project).addEmployee(emp3);
+            timeRegistration.addUser(emp1);
+            timeRegistration.addUser(emp2);
+            timeRegistration.addUser(emp3);
+            timeRegistration.getProject(project).addEmployee(emp1);
+            timeRegistration.getProject(project).addEmployee(emp2);
+            timeRegistration.getProject(project).addEmployee(emp3);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -49,7 +48,7 @@ public class SeeAvaliableHoursTest {
     @And("the employee {string} is associated with activity {string} in project {string}")
     public void theEmployeeIsAssociatedWithActivity(String employee, String activity, String project) {
         try {
-            system.associateEmployeeWithActivity(project, activity, employee);
+            timeRegistration.associateEmployeeWithActivity(project, activity, employee);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -58,7 +57,7 @@ public class SeeAvaliableHoursTest {
     @When("the user checks for available employees in project {string}")
     public void theUserChecksForAvailableEmployees(String project) {
         try {
-            availableEmployees = system.getAssociatedEmployees(project);
+            availableEmployees = timeRegistration.getAssociatedEmployees(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -76,7 +75,7 @@ public class SeeAvaliableHoursTest {
     @And("the user is not the project lead of {string}")
     public void theUserIsNotTheProjectLeadOf(String project) {
         try {
-            system.setProjectLead(project, "");
+            timeRegistration.setProjectLead(project, "");
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

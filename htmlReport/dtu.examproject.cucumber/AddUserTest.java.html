@@ -2,7 +2,7 @@
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,21 +11,21 @@ import io.cucumber.java.en.When;
 
 public class AddUserTest {
 
-    private System system;
+    private System timeRegistration;
 <span class="fc" id="L15">    private String dummyUser = &quot;dumy&quot;;</span>
 <span class="fc" id="L16">    private String admin = &quot;admn&quot;;</span>
     private ErrorMessageHolder errorMessage;
 
-<span class="fc" id="L19">    public AddUserTest(System system, ErrorMessageHolder errorMessage) {</span>
-<span class="fc" id="L20">        this.system = system;</span>
+<span class="fc" id="L19">    public AddUserTest(System timeRegistration, ErrorMessageHolder errorMessage) {</span>
+<span class="fc" id="L20">        this.timeRegistration = timeRegistration;</span>
 <span class="fc" id="L21">        this.errorMessage = errorMessage;</span>
 <span class="fc" id="L22">    }</span>
 
 
-    @Given(&quot;the user is logged into the system&quot;)
+    @Given(&quot;the user is logged into the timeRegistration&quot;)
     public void theUserIsLoggedIntoTheSystem() throws Exception{
         try{
-<span class="fc" id="L28">            system.login(admin);</span>
+<span class="fc" id="L28">            timeRegistration.login(admin);</span>
 <span class="nc" id="L29">        } catch (Exception e){</span>
 <span class="nc" id="L30">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L31">        }</span>
@@ -34,7 +34,7 @@ public class AddUserTest {
     @When(&quot;the user registers the user {string}&quot;)
     public void theUserRegistersTheUser(String user) throws Exception {
         try {
-<span class="fc" id="L37">            system.addUser(user);</span>
+<span class="fc" id="L37">            timeRegistration.addUser(user);</span>
 <span class="fc" id="L38">        } catch (Exception e) {</span>
 <span class="fc" id="L39">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L40">        }</span>
@@ -42,13 +42,13 @@ public class AddUserTest {
 
     @Then(&quot;the user {string} is registered&quot;)
     public void theUserIsRegistered(String user) {
-<span class="fc" id="L45">        assertTrue(system.userExists(user));</span>
+<span class="fc" id="L45">        assertTrue(timeRegistration.userExists(user));</span>
 <span class="fc" id="L46">    }</span>
 
-    @And(&quot;a user with the initials {string} exists in the system&quot;)
+    @And(&quot;a user with the initials {string} exists in the timeRegistration&quot;)
     public void aUserWithTheInitialsExistsInTheSystem(String user) throws Exception {
         try {
-<span class="fc" id="L51">            system.addUser(user);</span>
+<span class="fc" id="L51">            timeRegistration.addUser(user);</span>
 <span class="nc" id="L52">        } catch (Exception e) {</span>
 <span class="nc" id="L53">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L54">        }</span>
@@ -61,24 +61,24 @@ public class AddUserTest {
 
 <span class="fc" id="L62">    }</span>
 
-    @Given(&quot;the user is not logged into the system&quot;)
+    @Given(&quot;the user is not logged into the timeRegistration&quot;)
     public void theUserIsNotLoggedIntoTheSystem() {
-<span class="fc" id="L66">        system.logout();</span>
+<span class="fc" id="L66">        timeRegistration.logout();</span>
 <span class="fc" id="L67">    }</span>
 
 
-    @When(&quot;{string} logs into the system&quot;)
+    @When(&quot;{string} logs into the timeRegistration&quot;)
     public void logsIntoTheSystem(String user) {
         try {
-<span class="fc" id="L73">            system.login(user);</span>
+<span class="fc" id="L73">            timeRegistration.login(user);</span>
 <span class="fc" id="L74">        } catch (Exception e) {</span>
 <span class="fc" id="L75">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L76">        }</span>
 <span class="fc" id="L77">    }</span>
 
-    @Then(&quot;{string} is logged into the system&quot;)
+    @Then(&quot;{string} is logged into the timeRegistration&quot;)
     public void isLoggedIntoTheSystem(String user) {
-<span class="fc" id="L81">        assertEquals(user, system.getActiveUser());</span>
+<span class="fc" id="L81">        assertEquals(user, timeRegistration.getActiveUser());</span>
 <span class="fc" id="L82">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

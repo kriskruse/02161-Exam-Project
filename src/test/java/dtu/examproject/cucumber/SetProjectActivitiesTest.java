@@ -1,6 +1,6 @@
 package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,19 +8,19 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertTrue;
 
 public class SetProjectActivitiesTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
 
-    public SetProjectActivitiesTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public SetProjectActivitiesTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
     @When("the user creates the activity {string} in the project {string}")
     public void theUserCreatesTheActivityInTheProject(String activity, String project) {
         try {
-            system.createActivity(project, activity);
+            timeRegistration.createActivity(project, activity);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -28,13 +28,13 @@ public class SetProjectActivitiesTest {
 
     @Then("project {string} has the activity {string}")
     public void projectHasTheActivity(String project, String activity) {
-        assertTrue(system.getProject(project).activityExists(activity));
+        assertTrue(timeRegistration.getProject(project).activityExists(activity));
     }
 
     @And("project {string} has no project lead")
     public void projectHasNoProjectLead(String project) {
         try {
-            system.setProjectLead(project, "");
+            timeRegistration.setProjectLead(project, "");
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -43,7 +43,7 @@ public class SetProjectActivitiesTest {
     @And("{string} is the project lead of project {string}")
     public void isTheProjectLeadOfProject(String lead, String project) {
         try {
-            system.setProjectLead(project, lead);
+            timeRegistration.setProjectLead(project, lead);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

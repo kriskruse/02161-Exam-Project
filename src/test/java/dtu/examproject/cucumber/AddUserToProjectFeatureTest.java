@@ -1,6 +1,6 @@
 package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,12 +8,12 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertTrue;
 
 public class AddUserToProjectFeatureTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private ErrorMessageHolder errorMessageHolder;
     private String admin = "admn";
 
-    public AddUserToProjectFeatureTest(System system, ErrorMessageHolder errorMessageHolder) {
-        this.system = system;
+    public AddUserToProjectFeatureTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessageHolder) {
+        this.timeRegistration = timeRegistration;
         this.errorMessageHolder = errorMessageHolder;
     }
 
@@ -21,8 +21,8 @@ public class AddUserToProjectFeatureTest {
     @And("a project {string} with activity {string} exists in the system")
     public void aProjectWithActivityExistsInTheSystem(String projectName, String activityName) throws Exception {
         try {
-            system.createProject(projectName);
-            system.addActivityToProject(projectName, activityName);
+            timeRegistration.createProject(projectName);
+            timeRegistration.addActivityToProject(projectName, activityName);
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -31,7 +31,7 @@ public class AddUserToProjectFeatureTest {
     @And("{string} is a registered user of the system")
     public void isARegisteredUserOfTheSystem(String user) throws Exception {
         try {
-            system.addUser(user);
+            timeRegistration.addUser(user);
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -40,7 +40,7 @@ public class AddUserToProjectFeatureTest {
     @When("the user associates {string} with {string}")
     public void theUserAssociatesWith(String user, String project) {
         try {
-            system.addUserToProject(project, user);
+            timeRegistration.addUserToProject(project, user);
 
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
@@ -50,7 +50,7 @@ public class AddUserToProjectFeatureTest {
     @Then("{string} is associated with project {string}")
     public void isAssociatedWithProject(String user, String project) {
         try {
-            assertTrue(system.getProject(project).isAssociated(user));
+            assertTrue(timeRegistration.getProject(project).isAssociated(user));
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -59,7 +59,7 @@ public class AddUserToProjectFeatureTest {
     @When("the user associates {string} to project {string}'s activity {string}")
     public void theUserAssociatesToProjectSActivity(String user, String project, String activity) {
         try {
-            system.addUserToActivity(project, activity, user);
+            timeRegistration.addUserToActivity(project, activity, user);
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -68,7 +68,7 @@ public class AddUserToProjectFeatureTest {
     @Then("{string} is associated with project {string}'s activity {string}")
     public void isAssociatedWithProjectSActivity(String user, String project, String activity) {
         try {
-            assertTrue(system.userIsAssociatedWithActivity(project, activity, user));
+            assertTrue(timeRegistration.userIsAssociatedWithActivity(project, activity, user));
         } catch (Exception e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }

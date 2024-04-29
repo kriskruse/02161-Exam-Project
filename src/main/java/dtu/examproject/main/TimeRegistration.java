@@ -7,13 +7,13 @@ import java.util.Objects;
 
 import java.util.Calendar;
 
-public class System {
+public class TimeRegistration {
 
     private List<String> userList = new ArrayList<>();
     private List<Project> projectList = new ArrayList<>();
     private String activeUser = "";
 
-    public System(){
+    public TimeRegistration(){
         this.userList.add("admn"); // Add a admin user as default
     }
 

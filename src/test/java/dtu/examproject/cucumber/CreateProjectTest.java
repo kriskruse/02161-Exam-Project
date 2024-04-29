@@ -1,7 +1,7 @@
 package dtu.examproject.cucumber;
 
 import dtu.examproject.main.Project;
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,20 +12,20 @@ import static org.junit.Assert.assertEquals;
 
 public class CreateProjectTest {
 
-    private System system;
+    private TimeRegistration timeRegistration;
     private ErrorMessageHolder errorMessage;
     private List<Project> projects;
     private List<String> projectNames;
 
-    public CreateProjectTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public CreateProjectTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
     @When("the user creates a project with the name {string}")
     public void theUserCreatesAProjectWithTheName(String project) {
         try {
-            system.createProject(project);
+            timeRegistration.createProject(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -34,7 +34,7 @@ public class CreateProjectTest {
     @Then("a project with the name {string} is in the system")
     public void aProjectWithTheNameIsInTheSystem(String project) {
         try {
-            system.createProject(project);
+            timeRegistration.createProject(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -42,7 +42,7 @@ public class CreateProjectTest {
 
     @When("the user requests all projects")
     public void theUserRequestsAllProjects() {
-        projects = system.getProjectList();
+        projects = timeRegistration.getProjectList();
         // get names of projects
         projectNames = projects.stream().map(Project::getProjectName).toList();
 
@@ -58,7 +58,7 @@ public class CreateProjectTest {
     @And("a project {string} exists in the system")
     public void aProjectExistsInTheSystem(String project) {
         try {
-            system.createProject(project);
+            timeRegistration.createProject(project);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

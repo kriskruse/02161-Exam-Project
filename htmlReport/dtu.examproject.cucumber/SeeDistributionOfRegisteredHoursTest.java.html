@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SeeDistributionOfRegisteredHoursTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jacoco.exec</a> &gt; <a href="index.source.html" class="el_package">dtu.examproject.cucumber</a> &gt; <span class="el_source">SeeDistributionOfRegisteredHoursTest.java</span></div><h1>SeeDistributionOfRegisteredHoursTest.java</h1><pre class="source lang-java linenums">package dtu.examproject.cucumber;
 
 import dtu.examproject.main.Activity;
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,13 +14,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class SeeDistributionOfRegisteredHoursTest {
-    private System system;
+    private System timeRegistration;
 <span class="fc" id="L18">    private String admin = &quot;admn&quot;;</span>
     private ErrorMessageHolder errorMessage;
     private Map&lt;Activity, Double&gt; hourDistribution;
 
-<span class="fc" id="L22">    public SeeDistributionOfRegisteredHoursTest(System system, ErrorMessageHolder errorMessage) {</span>
-<span class="fc" id="L23">        this.system = system;</span>
+<span class="fc" id="L22">    public SeeDistributionOfRegisteredHoursTest(System timeRegistration, ErrorMessageHolder errorMessage) {</span>
+<span class="fc" id="L23">        this.timeRegistration = timeRegistration;</span>
 <span class="fc" id="L24">        this.errorMessage = errorMessage;</span>
 <span class="fc" id="L25">    }</span>
 
@@ -28,7 +28,7 @@ public class SeeDistributionOfRegisteredHoursTest {
     public void hasHoursRegisteredTodayOnActivity(String employee, String activity, String project) {
 <span class="fc" id="L29">        Calendar date = Calendar.getInstance();</span>
         try {
-<span class="nc" id="L31">            system.registerHours(project, activity, employee, date, 8);</span>
+<span class="nc" id="L31">            timeRegistration.registerHours(project, activity, employee, date, 8);</span>
 <span class="fc" id="L32">        } catch (Exception e) {</span>
 <span class="fc" id="L33">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="nc" id="L34">        }</span>
@@ -37,7 +37,7 @@ public class SeeDistributionOfRegisteredHoursTest {
     @When(&quot;the user gets hour distribution for project {string}&quot;)
     public void theUserGetsHourRegistrationForActivityOfTheProject(String project) {
         try {
-<span class="fc" id="L40">            hourDistribution = system.getHourDistribution(project);</span>
+<span class="fc" id="L40">            hourDistribution = timeRegistration.getHourDistribution(project);</span>
 <span class="fc" id="L41">        } catch (Exception e) {</span>
 <span class="fc" id="L42">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L43">        }</span>

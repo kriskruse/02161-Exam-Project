@@ -1,6 +1,6 @@
 package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,13 +9,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class GetRegisteredTimeTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
     private double hours;
 
-    public GetRegisteredTimeTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public GetRegisteredTimeTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
@@ -23,7 +23,7 @@ public class GetRegisteredTimeTest {
     @When("the user requests their registered time")
     public void theUserRequestsTheirRegisteredTime() {
         try {
-            this.hours = system.getRegisteredTime(admin);
+            this.hours = timeRegistration.getRegisteredTime(admin);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -37,8 +37,8 @@ public class GetRegisteredTimeTest {
     @And("the user is a member of project {string} and activity {string}")
     public void theUserIsAMemberOfProjectAndActivity(String project, String activity){
         try {
-            system.getProject(project).addEmployee(admin);
-            system.getProject(project).addEmployeeToActivity(activity, admin);
+            timeRegistration.getProject(project).addEmployee(admin);
+            timeRegistration.getProject(project).addEmployeeToActivity(activity, admin);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

@@ -1,6 +1,6 @@
 package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,19 +8,19 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
 
 public class SetProjectLeadTest {
-    private System system;
+    private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
 
-    public SetProjectLeadTest(System system, ErrorMessageHolder errorMessage) {
-        this.system = system;
+    public SetProjectLeadTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
+        this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
     }
 
     @When("a user sets {string} as the project lead of {string}")
     public void aUserSetsAsTheProjectLeadOf(String lead, String project) {
         try {
-            system.setProjectLead(project, lead);
+            timeRegistration.setProjectLead(project, lead);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -28,16 +28,16 @@ public class SetProjectLeadTest {
 
     @Then("{string} is the project lead of {string}")
     public void isTheProjectLeadOf(String lead, String project) {
-        assertEquals(system.getProject(project).getProjectLead(), lead);
+        assertEquals(timeRegistration.getProject(project).getProjectLead(), lead);
     }
 
     @And("a project {string} does not exist in the system")
     public void aProjectDoesNotExistInTheSystem(String project) {
-        assertFalse(system.projectExists(project));
+        assertFalse(timeRegistration.projectExists(project));
     }
 
     @And("{string} is not a registered user of the system")
     public void isNotARegisteredUserOfTheSystem(String user) {
-        assertFalse(system.userExists(user));
+        assertFalse(timeRegistration.userExists(user));
     }
 }

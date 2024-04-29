@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SetActivityHourBudgetTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jacoco.exec</a> &gt; <a href="index.source.html" class="el_package">dtu.examproject.cucumber</a> &gt; <span class="el_source">SetActivityHourBudgetTest.java</span></div><h1>SetActivityHourBudgetTest.java</h1><pre class="source lang-java linenums">package dtu.examproject.cucumber;
 
-import dtu.examproject.main.System;
+import dtu.examproject.main.TimeRegistration;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,13 +8,13 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertEquals;
 
 public class SetActivityHourBudgetTest {
-    private System system;
+    private System timeRegistration;
 <span class="fc" id="L12">    private String dummyUser = &quot;dumy&quot;;</span>
 <span class="fc" id="L13">    private String admin = &quot;admn&quot;;</span>
     private ErrorMessageHolder errorMessage;
 
-<span class="fc" id="L16">    public SetActivityHourBudgetTest(System system, ErrorMessageHolder errorMessage) {</span>
-<span class="fc" id="L17">        this.system = system;</span>
+<span class="fc" id="L16">    public SetActivityHourBudgetTest(System timeRegistration, ErrorMessageHolder errorMessage) {</span>
+<span class="fc" id="L17">        this.timeRegistration = timeRegistration;</span>
 <span class="fc" id="L18">        this.errorMessage = errorMessage;</span>
 <span class="fc" id="L19">    }</span>
 
@@ -22,7 +22,7 @@ public class SetActivityHourBudgetTest {
     @And(&quot;the user is the project lead of project {string}&quot;)
     public void theUserIsTheProjectLeadOfProject(String project) {
         try {
-<span class="fc" id="L25">            system.setProjectLead(project, admin);</span>
+<span class="fc" id="L25">            timeRegistration.setProjectLead(project, admin);</span>
 <span class="nc" id="L26">        } catch (Exception e) {</span>
 <span class="nc" id="L27">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L28">        }</span>
@@ -31,7 +31,7 @@ public class SetActivityHourBudgetTest {
     @When(&quot;the user sets the hour budget as {int} for activity {string} in the project {string}&quot;)
     public void theUserSetsTheHourBudgetAsForActivityInTheProject(int budget, String activity, String project) {
         try {
-<span class="fc" id="L34">            system.setActivityHourBudget(project, activity, budget);</span>
+<span class="fc" id="L34">            timeRegistration.setActivityHourBudget(project, activity, budget);</span>
 <span class="fc" id="L35">        } catch (Exception e) {</span>
 <span class="fc" id="L36">            errorMessage.setErrorMessage(e.getMessage());</span>
 <span class="fc" id="L37">        }</span>
@@ -39,7 +39,7 @@ public class SetActivityHourBudgetTest {
 
     @Then(&quot;hour budget for activity {string} in project {string} is set to {int}&quot;)
     public void hourBudgetForActivityInProjectIsSetTo(String activity, String project, int budget) {
-<span class="fc" id="L42">        assertEquals(budget, system.getProject(project).getActivity(activity).getBudgetedHours());</span>
+<span class="fc" id="L42">        assertEquals(budget, timeRegistration.getProject(project).getActivity(activity).getBudgetedHours());</span>
 <span class="fc" id="L43">    }</span>
 
 

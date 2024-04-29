@@ -1,12 +1,18 @@
+package dtu.examproject.ui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 import java.util.Map;
 
+import dtu.examproject.main.Activity;
+import dtu.examproject.main.Project;
+import dtu.examproject.main.TimeRegistration;
+
 public class javacode extends JFrame implements ActionListener {
 
-    public static Systemm system = new Systemm();
+    public static TimeRegistration system = new TimeRegistration();
     private static final long serialVersionUID = 1L;
     // worker buttons
     public JButton bWorkerFunctions, bAddUser, bSetProjectLead, bSetProjectActivities, bSelectActivityTimeUsed,
