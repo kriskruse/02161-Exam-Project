@@ -75,11 +75,9 @@ public class Project {
         else {
             Map<String,Double> availableEmployees = new HashMap<>();
             for (String employee : associatedEmployees) {
-                if (activities.stream().noneMatch(a -> a.isAssociated(employee)))
-                    if(!(getActivity(sickness).isAssociated(employee) && getActivity(vacation).isAssociated(employee))) {
-
-                        availableEmployees.put(employee, getRegisteredTime(employee));
-                    }
+                if(!(getActivity(sickness).isAssociated(employee) && getActivity(vacation).isAssociated(employee))) {
+                    availableEmployees.put(employee, getRegisteredTime(employee));
+                }
             }
             return availableEmployees;
         }

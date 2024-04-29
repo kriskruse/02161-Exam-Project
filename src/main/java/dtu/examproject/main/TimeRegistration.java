@@ -150,11 +150,11 @@ public class TimeRegistration {
 
     }
 
-    public Set<String> getAssociatedEmployees(String project) throws Exception {
+    public Set<String> getAvailableEmployees(String project) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (!Objects.equals(activeUser, getProject(project).getProjectLead())) throw new Exception("User does not have the required permissions to do that");
-        else return getProject(project).getAssociatedEmployees();
+        else return getProject(project).getAvailableEmployees();
     }
 
     public Map<Activity, Double> getHourDistribution(String project) throws Exception {
