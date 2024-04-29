@@ -489,11 +489,11 @@ public class javacode extends JFrame implements ActionListener {
              * } catch (Exception eeee) {
              * System.out.println("An error occurred: " + eeee.getMessage());
              * }
-             * 
+             *
              * // Create a project
              * try {
              * system.createProject("Project1");
-             * 
+             *
              * // Add users to the project
              * system.addUserToProject("Project1", "User1");
              * system.addUserToProject("Project1", "User2");
@@ -504,18 +504,17 @@ public class javacode extends JFrame implements ActionListener {
              */
             try {
                 txtarea.append("List of employees assigned to a project, without an activity" + "\n");
+                List<Project> projects = system.getProjectList();
                 System.out.println("Available Employees:");
-                
-                Map<String,Double> availableEmployees = system.getAvailableEmployees(projectName);
-                
-                Map<String,Double> availableEmployees = project.getAvailableEmployees();
-                for (String employee : availableEmployees.keySet()) {
-                    text area.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
+                for (Project project : projects) {
+                    Map<String, Double> availableEmployees = project.getAvailableEmployees();
+                    for (String employee : availableEmployees.keySet()) {
+                        txtarea.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
+                    }
                 }
             } catch (Exception ee) {
                 System.out.println("An error occurred: " + ee.getMessage());
             }
-
         }
 
         else if (actionEvent.getSource() == bSetActivityHourBudget) {
