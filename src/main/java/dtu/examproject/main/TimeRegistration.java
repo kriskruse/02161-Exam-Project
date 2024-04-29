@@ -1,6 +1,7 @@
 package dtu.examproject.main;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TimeRegistration {
 
@@ -21,6 +22,13 @@ public class TimeRegistration {
     public String getActiveUser() {return activeUser;}
 
 
+    public List<String> getProjectNameList() {
+        List<String> projectNames = new ArrayList<>();
+        for (Project p : projectList){
+            projectNames.add(p.getProjectName());
+        }
+        return projectNames;
+    }
 
     public void registerHours(String projectName, String activityName, String employee, Calendar date, double hours) throws Exception {
         // change precision of calendar object to day

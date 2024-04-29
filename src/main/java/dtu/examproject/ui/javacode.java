@@ -282,7 +282,7 @@ public class javacode extends JFrame implements ActionListener {
                                     txtarea.append("Activity: " + name2 + " from project " + name1
                                             + " now has a budget of " + name3 + "\n");
                                 } catch (Exception e) {
-                                    System.out.println(e);
+                                    System.out.println(e.getMessage());
                                 }
                             }
                         }
@@ -303,7 +303,7 @@ public class javacode extends JFrame implements ActionListener {
                             double time = system.getRegisteredTime(name);
                             txtarea.append("The user: " + name + " has " + time + " hours registered" + "\n");
                         } catch (Exception e) {
-                            System.out.println(e);
+                            System.out.println(e.getMessage());
                         }
 
                     }
@@ -332,7 +332,7 @@ public class javacode extends JFrame implements ActionListener {
                                     txtarea.append("Added user: " + name3 + " to the activity " + name2
                                             + " in the project " + name1 + "\n");
                                 } catch (Exception e) {
-                                    System.out.println(e);
+                                    System.out.println(e.getMessage());
                                 }
                             }
                         }
@@ -407,7 +407,7 @@ public class javacode extends JFrame implements ActionListener {
                                 system.setProjectLead(name, name2);
                                 txtarea.append("Set: " + name2 + " as project leader in " + name + "\n");
                             } catch (Exception e) {
-                                System.out.println(e);
+                                System.out.println(e.getMessage());
                                 txtarea.append(e + "\n");
                             }
                         }
@@ -446,7 +446,7 @@ public class javacode extends JFrame implements ActionListener {
                                         txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
                                                 + intValue4 + "\n");
                                     } catch (Exception e) {
-                                        System.out.println(e);
+                                        System.out.println(e.getMessage());
                                     }
                                 }
                             }
@@ -548,7 +548,7 @@ public class javacode extends JFrame implements ActionListener {
                                     txtarea.append("Activity: " + name2 + " from project " + name1
                                             + " now has a budget of " + name3 + "\n");
                                 } catch (Exception e) {
-                                    System.out.println(e);
+                                    System.out.println(e.getMessage());
                                 }
                             }
                         }
