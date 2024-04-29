@@ -504,13 +504,13 @@ public class javacode extends JFrame implements ActionListener {
              */
             try {
                 txtarea.append("List of employees assigned to a project, without an activity" + "\n");
-                List<Project> projects = system.getProjectList();
                 System.out.println("Available Employees:");
-                for (Project project : projects) {
-                    Map<String,Double> availableEmployees = project.getAvailableEmployees();
-                    for (String employee : availableEmployees.keySet()) {
-                        txtarea.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
-                    }
+                
+                Map<String,Double> availableEmployees = system.getAvailableEmployees(projectName);
+                
+                Map<String,Double> availableEmployees = project.getAvailableEmployees();
+                for (String employee : availableEmployees.keySet()) {
+                    text area.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
                 }
             } catch (Exception ee) {
                 System.out.println("An error occurred: " + ee.getMessage());
