@@ -60,6 +60,7 @@ public class TimeRegistration {
     public void addUser(String user) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (userList.contains(user)) throw new Exception("A user with those initials already exists");
+        else if (user.length() != 4) throw new Exception("User initials must be 4 characters long");
         else userList.add(user);
     }
 
@@ -71,7 +72,7 @@ public class TimeRegistration {
     public void createProject(String projectName) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (projectExists(projectName)) throw new Exception("A project with that name already exists");
-        else projectList.add(new Project(projectName));
+        else projectList.add(new Project(projectName, projectList.size() + 1));
     }
 
     public void addUserToProject(String projectName, String user) throws Exception {

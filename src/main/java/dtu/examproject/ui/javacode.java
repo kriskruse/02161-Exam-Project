@@ -371,7 +371,7 @@ public class javacode extends JFrame implements ActionListener {
                 public void run() {
                     JFrame frame = new JFrame();
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    bAddProjectMethod dialog = new bAddProjectMethod(frame);
+                    dialogPanel dialog = new dialogPanel(frame, "Enter project name", "Create Project", "Cancel");
 
                     dialog.setVisible(true);
                     String name = dialog.getName();
@@ -436,20 +436,14 @@ public class javacode extends JFrame implements ActionListener {
                     String name4 = dialog4.getName();
                     int intValue3 = Integer.parseInt(name3);
                     int intValue4 = Integer.parseInt(name4);
-                    if (name1 != null) {
-                        if (name2 != null) {
-                            if (name3 != null) {
-                                if (name4 != null) {
-                                    try {
-                                        system.setActivityStart(name1, name2, intValue3);
-                                        system.setActivityEnd(name1, name2, intValue4);
-                                        txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
-                                                + intValue4 + "\n");
-                                    } catch (Exception e) {
-                                        System.out.println(e.getMessage());
-                                    }
-                                }
-                            }
+                    if (name1 != null && name2 != null && name3 != null && name4 != null){
+                        try {
+                            system.setActivityStart(name1, name2, intValue3);
+                            system.setActivityEnd(name1, name2, intValue4);
+                            txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
+                                    + intValue4 + "\n");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
                         }
                     }
                 }
@@ -606,6 +600,8 @@ public class javacode extends JFrame implements ActionListener {
 
         JOptionPane.showMessageDialog(parent, panel, "Log In", JOptionPane.PLAIN_MESSAGE);
     }
+
+
 
     // ------------------------------------ bAddUser function
     // -------------------------------------
@@ -1090,18 +1086,17 @@ public class javacode extends JFrame implements ActionListener {
 
     }
 
-    // ------------------------------------------ bAddProjectMethod
-    // ---------------------------------------
-    public class bAddProjectMethod extends JDialog {
+
+    public class dialogPanel extends JDialog{
         private JTextField nameField;
         private JButton okButton;
         private String name;
 
-        public bAddProjectMethod(Frame parent) {
-            super(parent, "Name your project", true);
+        public dialogPanel(Frame parent, String title, String btnText, String labelText) {
+            super(parent, title, true);
             JPanel panel = new JPanel(new BorderLayout());
             nameField = new JTextField();
-            okButton = new JButton("OK");
+            okButton = new JButton(btnText);
 
             okButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -1119,7 +1114,7 @@ public class javacode extends JFrame implements ActionListener {
                     }
                 }
             });
-            panel.add(new JLabel("Enter name:"), BorderLayout.NORTH);
+            panel.add(new JLabel(labelText), BorderLayout.NORTH);
             panel.add(nameField, BorderLayout.CENTER);
             panel.add(okButton, BorderLayout.SOUTH);
             getContentPane().add(panel);
@@ -1127,10 +1122,8 @@ public class javacode extends JFrame implements ActionListener {
             setSize(300, 100);
             setLocationRelativeTo(parent);
         }
-
         public String getName() {
             return name;
         }
-
     }
 }

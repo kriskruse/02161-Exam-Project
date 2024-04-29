@@ -1,18 +1,23 @@
 package dtu.examproject.main;
 
+import io.cucumber.java.ca.Cal;
+
 import java.util.*;
 
 public class Project {
 
     private String projectName;
+    private String projectID;
     private List<Activity> activities = new ArrayList<>();
     private Set<String> associatedEmployees = new HashSet<>();
     private String projectLead;
     private String sickness = "Sickness";
     private String vacation = "Vacation";
 
-    public Project(String projectName) {
+    public Project(String projectName, int projectNum){
         this.projectName = projectName;
+        String year = "" + Calendar.getInstance().get(Calendar.YEAR);
+        this.projectID = year.substring(year.length() - 2) + String.format("%04d", projectNum);
         this.projectLead = "";
         this.activities.add(new Activity(sickness));
         this.activities.add(new Activity(vacation));
