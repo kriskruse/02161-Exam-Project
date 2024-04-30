@@ -53,7 +53,7 @@ public class Activity {
     }
 
 
-    public double getTotalEmployeeHours(String employee) throws Exception {
+    public double getTotalEmployeeHours(String employee, int startWeek, int endWeek) throws Exception {
         // find employee and return hours
         if (!associatedEmployees.contains(employee))
             throw new Exception("Employee is not associated with this activity");
@@ -61,6 +61,7 @@ public class Activity {
             return
                 registeredHours.stream()
                     .filter(r -> r.getEmployee().equals(employee))
+                    .filter(r -> r.getDate().get(Calendar.WEEK_OF_YEAR) >= startWeek && r.getDate().get(Calendar.WEEK_OF_YEAR) <= endWeek)
                     .mapToDouble(Registry::getHours)
                     .sum();
     }

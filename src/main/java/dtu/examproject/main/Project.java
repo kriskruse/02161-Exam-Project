@@ -87,11 +87,11 @@ public class Project {
     }
 
 
-    public double getRegisteredTime(String employee) {
+    public double getRegisteredTime(String employee, int startWeek, int endWeek) {
         double hours = 0;
         for (Activity a : getActivities()) {
             try {
-                hours += a.getTotalEmployeeHours(employee);
+                hours += a.getTotalEmployeeHours(employee, startWeek, endWeek);
             } catch (Exception e) {
                 hours += 0;
             }

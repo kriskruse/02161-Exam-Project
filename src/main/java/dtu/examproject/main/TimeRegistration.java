@@ -150,7 +150,7 @@ public class TimeRegistration {
 
     }
 
-    public Set<String> getAvailableEmployees(String project, int startWeek, int endWeek) throws Exception {
+    public Map<String,Double> getAvailableEmployees(String project, int startWeek, int endWeek) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (startWeek > endWeek) throw new Exception("Invalid week interval");
