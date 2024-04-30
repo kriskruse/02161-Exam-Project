@@ -24,15 +24,6 @@ public class SeeAvaliableUsersTest {
     }
 
 
-    @And("the user is the project lead of {string}")
-    public void theUserIsTheProjectLeadOf(String project) {
-        try {
-            timeRegistration.setProjectLead(project, admin);
-        } catch (Exception e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
-    }
-
     @And("there are employees named {string} {string} and {string} associated with project {string}")
     public void thereAreEmployeesNamedAndAssociatedWithProject(String emp1, String emp2, String emp3, String project) {
         try {
