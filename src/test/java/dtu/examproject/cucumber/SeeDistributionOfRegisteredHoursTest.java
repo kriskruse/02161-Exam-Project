@@ -26,8 +26,9 @@ public class SeeDistributionOfRegisteredHoursTest {
     @And("{string} has hours registered on activity {string} of the project {string}")
     public void hasHoursRegisteredTodayOnActivity(String employee, String activity, String project) {
         Calendar date = Calendar.getInstance();
+        int week = date.get(Calendar.WEEK_OF_YEAR);
         try {
-            timeRegistration.registerHours(project, activity, employee, date, 8);
+            timeRegistration.registerHours(project, activity, employee, week, 8);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

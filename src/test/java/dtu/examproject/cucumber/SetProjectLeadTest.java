@@ -26,6 +26,15 @@ public class SetProjectLeadTest {
         }
     }
 
+    @And("the user is the project lead of {string}")
+    public void theUserIsTheProjectLeadOf(String project) {
+        try {
+            timeRegistration.setProjectLead(project, admin);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
     @Then("{string} is the project lead of {string}")
     public void isTheProjectLeadOf(String lead, String project) {
         assertEquals(timeRegistration.getProject(project).getProjectLead(), lead);

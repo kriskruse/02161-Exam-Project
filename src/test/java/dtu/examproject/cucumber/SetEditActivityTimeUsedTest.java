@@ -13,12 +13,12 @@ public class SetEditActivityTimeUsedTest {
     private TimeRegistration timeRegistration;
     private String admin = "admn";
     private ErrorMessageHolder errorMessage;
-    private Calendar today;
+    private int thisWeek;
 
     public SetEditActivityTimeUsedTest(TimeRegistration timeRegistration, ErrorMessageHolder errorMessage) {
         this.timeRegistration = timeRegistration;
         this.errorMessage = errorMessage;
-        this.today = Calendar.getInstance();
+        this.thisWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
     }
 
 
@@ -26,7 +26,7 @@ public class SetEditActivityTimeUsedTest {
     public void theUserSetsTheirHoursSpentOnActivityToHours(String activity, String project, double hours) {
         try {
 
-            timeRegistration.registerHours(project, activity, admin, today, hours);
+            timeRegistration.registerHours(project, activity, admin, thisWeek, hours);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -35,7 +35,9 @@ public class SetEditActivityTimeUsedTest {
     @Then("{double} hours are registered on activity {string} for project {string}")
     public void hoursAreRegisteredOnActivity(double hours, String activity, String project) {
         try {
-            assertEquals(hours, timeRegistration.getProject(project).getActivity(activity).getTotalEmployeeHours(admin), 0.01);
+            assertEquals(hours, timeRegistration.getProject(project)
+                    .getActivity(activity)
+                    .getTotalEmployeeHours(admin, 0, 52), 0.01);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

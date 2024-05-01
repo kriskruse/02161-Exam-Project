@@ -507,7 +507,7 @@ public class javacode extends JFrame implements ActionListener {
                 List<Project> projects = system.getProjectList();
                 System.out.println("Available Employees:");
                 for (Project project : projects) {
-                    Map<String, Double> availableEmployees = project.getAvailableEmployees();
+                    Map<String, Double> availableEmployees = project.getAvailableEmployees(0, 52); // all weeks
                     for (String employee : availableEmployees.keySet()) {
                         txtarea.append(employee + " (Project: " + project.getProjectName() + ")" + "\n");
                     }

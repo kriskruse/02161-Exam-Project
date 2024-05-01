@@ -48,4 +48,13 @@ public class SetProjectActivitiesTest {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
+
+    @And("the project {string} has the activity {string}")
+    public void theProjectHasTheActivity(String project, String activity) {
+        try {
+            timeRegistration.createActivity(project, activity);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
 }

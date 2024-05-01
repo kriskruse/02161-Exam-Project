@@ -35,8 +35,11 @@ public class TimeRegistration {
     }
 
     public void registerHours(String projectName, String activityName,
-                              String employee, Calendar date, double hours) throws Exception {
+                              String employee, int week, double hours) throws Exception {
         // change precision of calendar object to day
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.WEEK_OF_YEAR, week);
+        date.set(Calendar.DAY_OF_WEEK, 1);
         date.set(Calendar.HOUR_OF_DAY, 0);
         date.set(Calendar.MINUTE, 0);
         date.set(Calendar.SECOND, 0);
@@ -145,7 +148,6 @@ public class TimeRegistration {
         else if (!userExists(user)) throw new Exception("User does not exist");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
         else if (!getProject(project).activityExists(activity)) throw new Exception("Activity does not exist");
-        else if (!userIsAssociatedWithProject(project, user)) throw new Exception("User is not associated with project");
         else getProject(project).addEmployeeToActivity(activity, user);
 
     }
@@ -173,7 +175,7 @@ public class TimeRegistration {
         else {
             double hours = 0;
             for (Project p : projectList) {
-                hours += p.getRegisteredTime(user);
+                hours += p.getRegisteredTime(user, 0 , 52);
 
             }
             return hours;

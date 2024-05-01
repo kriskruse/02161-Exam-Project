@@ -64,8 +64,7 @@ public class Project {
     }
 
     public Map<String,Double> getAvailableEmployees(int startWeek, int endWeek) throws Exception {
-        if (activities.isEmpty()) throw new Exception("No activities in project");
-        else if (associatedEmployees.isEmpty()) throw new Exception("No employees associated with project");
+        if (associatedEmployees.isEmpty()) throw new Exception("No employees associated with project");
         else {
             Map<String,Double> availableEmployees = new HashMap<>();
             for (String employee : associatedEmployees) {
@@ -81,8 +80,8 @@ public class Project {
         if (!activityExists(activityName))
             throw new Exception("Activity does not exist");
         else {
-            getActivity(activityName).addEmployee(employee);
             addEmployee(employee);
+            getActivity(activityName).addEmployee(employee);
         }
     }
 
