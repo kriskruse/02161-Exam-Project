@@ -472,7 +472,7 @@ public class UiClass extends JFrame implements ActionListener {
                         for (Map.Entry<Activity, Double> entry : hourDistributionMap.entrySet()) {
                             Activity activity = entry.getKey();
                             Double hours = entry.getValue();
-                            txtarea.append("Activity: " + activity.getTitle() + ", Hours: " + hours+"\n");
+                            txtarea.append("Activity: " + activity.getTitle() + ", budgeted hours: " + (activity.getBudgetedHours()) + ", registered hours: " + hours+"\n");
                         }
 
                     }
