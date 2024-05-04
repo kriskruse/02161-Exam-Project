@@ -6,7 +6,6 @@ Feature: Get registered time
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system
     And a project "Project 2" with activity "Activity 2" exists in the system
-    And the user creates the activity "Activity 3" in the project "Project 2"
     And the user is a member of project "Project 1" and activity "Activity 1"
     And the user is a member of project "Project 2" and activity "Activity 2"
     And the user sets their hours spent today on activity "Activity 1" for project "Project 1" to 5 hours
