@@ -11,7 +11,7 @@ Feature: See the distribution of registered hours
     When the user gets hour distribution for project "Project 1"
     Then the distribution of hour registrations is given
 
-  Scenario: The user gets hourdistribution for a project without registered activities
+  Scenario: The user gets hour distribution for a project without registered activities
     Given the user is logged into the system
     And a project "Project 1" exists in the system
     And the user is the project lead of "Project 1"
