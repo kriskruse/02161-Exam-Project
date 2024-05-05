@@ -18,7 +18,7 @@ public class UiClass extends JFrame implements ActionListener {
             bGetRegisteredTime, bAddUserToActivity, bAddActivity, bAddProject;
     // project lead buttons
     public JButton bSetActivityHourBudget, bSeeAvalibleUsers, bSeeDistributionOfHours, bSetStartEndTime,
-            bSetNewProjectLead, bUserLogout;
+            bSetNewProjectLead;
     public JTextArea txtarea;
     public JTextField txtfld;
     public JLabel txt1, txt2, txtusername;
@@ -97,10 +97,6 @@ public class UiClass extends JFrame implements ActionListener {
         bSetNewProjectLead.setMaximumSize(btnsize);
         bSetNewProjectLead.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        bUserLogout = new JButton("Logout");
-        bUserLogout.addActionListener(this);
-        bUserLogout.setMaximumSize(btnsize);
-        bUserLogout.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JPanel p1 = new JPanel();
         p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
@@ -129,8 +125,6 @@ public class UiClass extends JFrame implements ActionListener {
         p1.add(bSetProjectLead);
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         p1.add(bAddUser);
-        p1.add(Box.createRigidArea(new Dimension(110, 5)));
-        p1.add(bUserLogout);
         p1.add(Box.createRigidArea(new Dimension(110, 170)));
 
         txtusername = new JLabel("  Signed in as "+username);
