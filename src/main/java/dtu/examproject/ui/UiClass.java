@@ -13,18 +13,16 @@ import java.util.Map;
 public class UiClass extends JFrame implements ActionListener {
 
     public static TimeRegistration system = new TimeRegistration();
-    private static final long serialVersionUID = 1L;
     // worker buttons
     public JButton bWorkerFunctions, bAddUser, bSetProjectLead, bSelectActivityTimeUsed,
             bGetRegisteredTime, bAddUserToActivity, bAddActivity, bAddProject;
     // project lead buttons
     public JButton bSetActivityHourBudget, bSeeAvalibleUsers, bSeeDistributionOfHours, bSetStartEndTime,
-            bSetNewProjectLead;
+            bSetNewProjectLead, bUserLogout;
     public JTextArea txtarea;
     public JTextField txtfld;
     public JLabel txt1, txt2, txtusername;
     public static String username = "placeholder";
-    public static String password;
 
     public UiClass() {
 
@@ -32,6 +30,7 @@ public class UiClass extends JFrame implements ActionListener {
 
         Dimension btnsize = new Dimension(190, 40);
         Dimension txtsize = new Dimension(150, 30);
+
 
         bWorkerFunctions = new JButton("Worker Functions");
         bWorkerFunctions.addActionListener(this);
@@ -98,6 +97,11 @@ public class UiClass extends JFrame implements ActionListener {
         bSetNewProjectLead.setMaximumSize(btnsize);
         bSetNewProjectLead.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        bUserLogout = new JButton("Logout");
+        bUserLogout.addActionListener(this);
+        bUserLogout.setMaximumSize(btnsize);
+        bUserLogout.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         JPanel p1 = new JPanel();
         p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
         txt1 = new JLabel("            User Buttons");
@@ -125,7 +129,10 @@ public class UiClass extends JFrame implements ActionListener {
         p1.add(bSetProjectLead);
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         p1.add(bAddUser);
+        p1.add(Box.createRigidArea(new Dimension(110, 5)));
+        p1.add(bUserLogout);
         p1.add(Box.createRigidArea(new Dimension(110, 170)));
+
         txtusername = new JLabel("  Signed in as "+username);
         txtusername.setMaximumSize(txtsize);
         txtusername.setAlignmentX(CENTER_ALIGNMENT);
@@ -164,6 +171,7 @@ public class UiClass extends JFrame implements ActionListener {
         getContentPane().add(scrollpane, BorderLayout.CENTER);
         txtarea.setEditable(false);
         txtfld = new JTextField(40);
+
     }
 
     // --------------------------------------------------- WORKER BUTTON ACTIONS
@@ -172,21 +180,20 @@ public class UiClass extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (actionEvent.getSource() == bWorkerFunctions) {
             System.exit(0);
+
         } else if (actionEvent.getSource() == bAddUser) {
-            dialogPanel dialog =
-                    new dialogPanel(frame, "Register user", "Enter", "User name (4 characters)");
+            dialogPanel dialog = new dialogPanel(frame, "Register user", "Enter", "User name (4 characters)");
             dialog.setVisible(true);
             String name = dialog.getName();
-
-                    if (name != null) {
-                        try {
-                            system.addUser(name);
-                            txtarea.append("Added user: " + name + "\n");
-                        } catch (Exception e) {
-                            txtarea.append(e.getMessage() + "\n");
-                        }
-
-                    };
+            if (name == null) {
+                return;
+            }
+            try {
+                system.addUser(name);
+                txtarea.append("Added user: " + name + "\n");
+            } catch (Exception e) {
+                txtarea.append(e.getMessage() + "\n");
+            }
 
         } else if (actionEvent.getSource() == bSetProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
