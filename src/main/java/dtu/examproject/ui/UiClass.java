@@ -215,35 +215,35 @@ public class UiClass extends JFrame implements ActionListener {
                 }
             });
         } else if (actionEvent.getSource() == bSelectActivityTimeUsed) {
-            dialogPanel dialog = new dialogPanel(frame, "Enter project name", "Enter", "Cancel");
+            dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Project name");
             dialog.setVisible(true);
             String p = dialog.getName();
             if (p == null) {
                 return;
             }
 
-            dialogPanel dialog2 = new dialogPanel(frame, "Enter activity name", "Enter", "Cancel");
+            dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity name", "Enter", "Activity name");
             dialog2.setVisible(true);
             String a = dialog2.getName();
             if (a == null) {
                 return;
             }
 
-            dialogPanel dialog4 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
+            dialogPanel dialog4 = new dialogPanel(frame, "Enter an employee name", "Enter", "Employee name");
             dialog4.setVisible(true);
             String e = dialog4.getName();
             if (e == null) {
                 return;
             }
 
-            dialogPanel dialog3 = new dialogPanel(frame, "Enter week", "Enter", "Cancel");
+            dialogPanel dialog3 = new dialogPanel(frame, "Enter what week the time is to be used in", "Enter", "Week");
             dialog3.setVisible(true);
             int week = Integer.parseInt(dialog3.getName());
             if (week == 0) {
                 return;
             }
 
-            dialogPanel dialog5 = new dialogPanel(frame, "Enter number of hours", "Enter", "Cancel");
+            dialogPanel dialog5 = new dialogPanel(frame, "Enter number of hours", "Enter", "Hours");
             dialog5.setVisible(true);
             double hours = Double.parseDouble(dialog5.getName());
 
@@ -259,7 +259,7 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bGetRegisteredTime) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
                     if (name != null) {
@@ -277,21 +277,21 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bAddUserToActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter the project the activity belongs to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
                     if (name1 == null) {
                         return;
                     }
 
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter the activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
                     if (name2 == null) {
                         return;
                     }
 
-                    dialogPanel dialog3 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
+                    dialogPanel dialog3 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog3.setVisible(true);
                     String name3 = dialog3.getName();
                     if (name3 == null) {
@@ -311,13 +311,13 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bAddActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter the project the activity will belong to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
                     if (name1 == null) {
                         return;
                     }
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter the name of the activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
                     if (name2 == null) {
@@ -335,7 +335,7 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bAddProject) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Project");
                     dialog.setVisible(true);
                     String name = dialog.getName();
                     if (name == null) {
@@ -356,14 +356,14 @@ public class UiClass extends JFrame implements ActionListener {
         else if (actionEvent.getSource() == bSetNewProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
                     if (name == null) {
                         return;
                     }
 
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
                     if (name2 == null) {
@@ -384,23 +384,23 @@ public class UiClass extends JFrame implements ActionListener {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
 
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
                     if (name1 == null) {
                         return;
                     }
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
                     if (name2 == null) {
                         return;
                     }
-                    dialogPanel dialog3 = new dialogPanel(frame, "Enter a start week for activity", "Enter", "Cancel");
+                    dialogPanel dialog3 = new dialogPanel(frame, "Enter a start week for activity", "Enter", "Start week");
                     dialog3.setVisible(true);
                     int intValue3 = Integer.parseInt(dialog3.getName());
 
-                    dialogPanel dialog4 = new dialogPanel(frame, "Enter an end week for activity", "Enter", "Cancel");
+                    dialogPanel dialog4 = new dialogPanel(frame, "Enter an end week for activity", "Enter", "End week");
                     dialog4.setVisible(true);
                     int intValue4 = Integer.parseInt(dialog4.getName());
 
@@ -422,7 +422,7 @@ public class UiClass extends JFrame implements ActionListener {
 
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
                     if (name == null) {
@@ -447,18 +447,15 @@ public class UiClass extends JFrame implements ActionListener {
         }
 
         else if (actionEvent.getSource() == bSeeAvalibleUsers) {
-            dialogPanel dialog = new dialogPanel(frame, "Enter project name", "Enter project", "Cancel");
+            dialogPanel dialog = new dialogPanel(frame, "What project would you like to see hour distribution for", "Enter", "Project name");
             dialog.setVisible(true);
             String project = dialog.getName();
-            if (project == null) {
-                return;
-            }
 
-            dialogPanel dialog2 = new dialogPanel(frame, "Enter start week", "Enter Week", "Cancel");
+            dialogPanel dialog2 = new dialogPanel(frame, "From what week", "Enter", "Start week");
             dialog2.setVisible(true);
             int startWeek = Integer.parseInt(dialog2.getName());
 
-            dialogPanel dialog3 = new dialogPanel(frame, "Enter end week", "Enter Week", "Cancel");
+            dialogPanel dialog3 = new dialogPanel(frame, "To what week", "Enter", "End week");
             dialog3.setVisible(true);
             int endWeek = Integer.parseInt(dialog3.getName());
 
@@ -479,21 +476,21 @@ public class UiClass extends JFrame implements ActionListener {
         else if (actionEvent.getSource() == bSetActivityHourBudget) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "What project does the activity belong to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
                     if (name1 == null) {
                         return;
                     }
 
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
                     if (name2 == null) {
                         return;
                     }
 
-                    dialogPanel dialog3 = new dialogPanel(frame, "Enter a budget in hours", "Enter", "Cancel");
+                    dialogPanel dialog3 = new dialogPanel(frame, "Enter a budget in hours", "Enter", "Hours");
                     dialog3.setVisible(true);
                     int intValue = Integer.parseInt(dialog3.getName());
                     try {
