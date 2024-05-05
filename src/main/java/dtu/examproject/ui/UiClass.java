@@ -168,13 +168,13 @@ public class UiClass extends JFrame implements ActionListener {
 
     // --------------------------------------------------- WORKER BUTTON ACTIONS
     public void actionPerformed(ActionEvent actionEvent) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (actionEvent.getSource() == bWorkerFunctions) {
             System.exit(0);
         } else if (actionEvent.getSource() == bAddUser) {
-
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            dialogPanel dialog = new dialogPanel(frame, "Enter employee name (no more than 4 characters)", "Enter", "Cancel");
+            dialogPanel dialog =
+                    new dialogPanel(frame, "Register user", "Enter", "User name (4 characters)");
             dialog.setVisible(true);
             String name = dialog.getName();
 
@@ -191,61 +191,60 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bSetProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
+                    dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
+                    if (name1 == null) {
+                        return;
+                    }
 
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
+                    dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-
-                    if (name1 != null) {
-                        if (name2 != null) {
-                            try {
-                                system.setProjectLead(name1, name2);
-                                txtarea.append("Set: " + name2 + " as the leader of the project " + name1 + "\n");
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                                txtarea.append(e.getMessage() + "\n");
-                            }
-                        }
+                    if (name2 == null) {
+                        return;
+                    }
+                    try {
+                        system.setProjectLead(name1, name2);
+                        txtarea.append("Set: " + name2 + " as the leader of the project " + name1 + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
                 }
             });
         } else if (actionEvent.getSource() == bSelectActivityTimeUsed) {
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog = new dialogPanel(frame, "Enter project name", "Enter", "Cancel");
             dialog.setVisible(true);
             String p = dialog.getName();
+            if (p == null) {
+                return;
+            }
 
-            JFrame frame2 = new JFrame();
-            frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog2 = new dialogPanel(frame, "Enter activity name", "Enter", "Cancel");
             dialog2.setVisible(true);
             String a = dialog2.getName();
+            if (a == null) {
+                return;
+            }
 
-            JFrame frame4 = new JFrame();
-            frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog4 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
             dialog4.setVisible(true);
             String e = dialog4.getName();
+            if (e == null) {
+                return;
+            }
 
-            JFrame frame3 = new JFrame();
-            frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog3 = new dialogPanel(frame, "Enter week", "Enter", "Cancel");
             dialog3.setVisible(true);
             int week = Integer.parseInt(dialog3.getName());
+            if (week == 0) {
+                return;
+            }
 
-            JFrame frame5 = new JFrame();
-            frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog5 = new dialogPanel(frame, "Enter number of hours", "Enter", "Cancel");
             dialog5.setVisible(true);
-            Double hours = Double.parseDouble(dialog5.getName());
+            double hours = Double.parseDouble(dialog5.getName());
 
             try {
                 system.registerHours(p,a,e,week,hours);
@@ -259,8 +258,6 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bGetRegisteredTime) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name = dialog.getName();
@@ -279,36 +276,33 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bAddUserToActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
+                    if (name1 == null) {
+                        return;
+                    }
 
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
+                    if (name2 == null) {
+                        return;
+                    }
 
-                    JFrame frame3 = new JFrame();
-                    frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
                     dialog3.setVisible(true);
                     String name3 = dialog3.getName();
-                    if (name1 != null) {
-                        if (name2 != null) {
-                            if (name3 != null) {
-                                try {
-                                    system.addUserToActivity(name1, name2, name3);
-                                    txtarea.append("Added user: " + name3 + " to the activity " + name2
-                                            + " in the project " + name1 + "\n");
-                                } catch (Exception e) {
-                                    System.out.println(e.getMessage());
-                                    txtarea.append(e.getMessage() + "\n");
-                                }
-                            }
-                        }
+                    if (name3 == null) {
+                        return;
+                    }
+                    try {
+                        system.addUserToActivity(name1, name2, name3);
+                        txtarea.append("Added user: " + name3 + " to the activity " + name2
+                                + " in the project " + name1 + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
                 }
             });
@@ -316,49 +310,44 @@ public class UiClass extends JFrame implements ActionListener {
         } else if (actionEvent.getSource() == bAddActivity) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    if (name1 == null) {
+                        return;
+                    }
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name1 != null) {
-                        if (name2 != null) {
-                            try {
-                                system.createActivity(name1, name2);
-                                txtarea.append("Created activity: " + name2 + " in the project " + name1 + "\n");
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                                txtarea.append(e.getMessage() + "\n");
-                            }
-
-                        }
+                    if (name2 == null) {
+                        return;
+                    }
+                    try {
+                        system.createActivity(name1, name2);
+                        txtarea.append("Created activity: " + name2 + " in the project " + name1 + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
                 }
             });
         } else if (actionEvent.getSource() == bAddProject) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-
-                    if (name != null) {
-                        try {
-                            system.createProject(name);
-                            txtarea.append("Created project: " + name + "\n");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            txtarea.append(e.getMessage() + "\n");
-                        }
+                    if (name == null) {
+                        return;
                     }
+                    try {
+                        system.createProject(name);
+                        txtarea.append("Created project: " + name + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
+                    }
+
                 }
             });
         }
@@ -366,27 +355,25 @@ public class UiClass extends JFrame implements ActionListener {
         else if (actionEvent.getSource() == bSetNewProjectLead) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name = dialog.getName();
+                    if (name == null) {
+                        return;
+                    }
 
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Cancel");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name != null) {
-                        if (name2 != null) {
-                            try {
-                                system.setProjectLead(name, name2);
-                                txtarea.append("Set: " + name2 + " as project leader in " + name + "\n");
-                            } catch (Exception e) {
-                                System.out.println(e.getMessage());
-                                txtarea.append(e.getMessage() + "\n");
-                            }
-                        }
+                    if (name2 == null) {
+                        return;
+                    }
+                    try {
+                        system.setProjectLead(name, name2);
+                        txtarea.append("Set: " + name2 + " as project leader in " + name + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
                 }
             });
@@ -395,39 +382,36 @@ public class UiClass extends JFrame implements ActionListener {
         else if (actionEvent.getSource() == bSetStartEndTime) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    if (name1 == null) {
+                        return;
+                    }
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-
-                    JFrame frame3 = new JFrame();
-                    frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    if (name2 == null) {
+                        return;
+                    }
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter a start week for activity", "Enter", "Cancel");
                     dialog3.setVisible(true);
                     int intValue3 = Integer.parseInt(dialog3.getName());
 
-                    JFrame frame4 = new JFrame();
-                    frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog4 = new dialogPanel(frame, "Enter an end week for activity", "Enter", "Cancel");
                     dialog4.setVisible(true);
                     int intValue4 = Integer.parseInt(dialog4.getName());
 
-                        try {
-                            system.setActivityStart(name1, name2, intValue3);
-                            system.setActivityEnd(name1, name2, intValue4);
-                            txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
-                                    + intValue4 + "\n");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            txtarea.append(e.getMessage() + "\n");
-                        }
+                    try {
+                        system.setActivityStart(name1, name2, intValue3);
+                        system.setActivityEnd(name1, name2, intValue4);
+                        txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
+                                + intValue4 + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
+                    }
                 }
             });
         }
@@ -437,88 +421,54 @@ public class UiClass extends JFrame implements ActionListener {
 
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-
-                    if (name != null) {
-                        Map<Activity, Double> hourDistributionMap;
-                        try {
-                            hourDistributionMap = system.getHourDistribution(name);
-                        } catch (Exception e) {
-                            txtarea.append(e.getMessage() + "\n");
-                            return;
-                        }
-                        for (Map.Entry<Activity, Double> entry : hourDistributionMap.entrySet()) {
-                            Activity activity = entry.getKey();
-                            Double hours = entry.getValue();
-                            txtarea.append("Activity: " + activity.getTitle() + ", budgeted hours: " + (activity.getBudgetedHours()) + ", registered hours: " + hours+"\n");
-                        }
-
+                    if (name == null) {
+                        return;
                     }
+                    Map<Activity, Double> hourDistributionMap;
+                    try {
+                        hourDistributionMap = system.getHourDistribution(name);
+                    } catch (Exception e) {
+                        txtarea.append(e.getMessage() + "\n");
+                        return;
+                    }
+                    for (Map.Entry<Activity, Double> entry : hourDistributionMap.entrySet()) {
+                        Activity activity = entry.getKey();
+                        Double hours = entry.getValue();
+                        txtarea.append("Activity: " + activity.getTitle() + ", budgeted hours: " + (activity.getBudgetedHours()) + ", registered hours: " + hours+"\n");
+                    }
+
+
                 }
             });
         }
 
         else if (actionEvent.getSource() == bSeeAvalibleUsers) {
-            /*
-            try {
-                
-                system.addUser("Usr1");
-                system.addUser("Usr2");
-                system.addUser("Usr3");
-
-                system.createProject("Project1");
-                system.addUserToProject("Project1", "Usr1");
-                system.addUserToProject("Project1", "Usr2");
-                system.addUserToProject("Project1", "Usr3");
-                
-                system.createActivity("Project1", "Activity1");
-                system.createActivity("Project1", "Activity2");
-                system.createActivity("Project1", "Activity3");
-
-                system.addUserToActivity("Project1","Activity1", "Usr1");
-                system.addUserToActivity("Project1","Activity2", "Usr2");
-                system.addUserToActivity("Project1","Activity3", "Usr3");
-            
-                system.registerHours("Project1", "Activity1", "Usr1", 4, 3.5);
-                system.registerHours("Project1", "Activity2", "Usr2", 5, 15.75);
-                system.registerHours("Project1", "Activity3", "Usr3", 6, 10.25);
-                system.addUserToProject("Project1", "admn");
-                system.setProjectLead("Project1", "admn");
-            } catch (Exception eee) {
-                System.out.println("An error occurred1: " + eee.getMessage());
-            }
-             */
-             
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             dialogPanel dialog = new dialogPanel(frame, "Enter project name", "Enter project", "Cancel");
             dialog.setVisible(true);
             String project = dialog.getName();
-            
-            JFrame frame2 = new JFrame();
-            frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            dialogPanel dialog2 = new dialogPanel(frame2, "Enter start week", "Enter Week", "Cancel");
+            if (project == null) {
+                return;
+            }
+
+            dialogPanel dialog2 = new dialogPanel(frame, "Enter start week", "Enter Week", "Cancel");
             dialog2.setVisible(true);
             int startWeek = Integer.parseInt(dialog2.getName());
-            
-            JFrame frame3 = new JFrame();
-            frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            dialogPanel dialog3 = new dialogPanel(frame3, "Enter end week", "Enter Week", "Cancel");
+
+            dialogPanel dialog3 = new dialogPanel(frame, "Enter end week", "Enter Week", "Cancel");
             dialog3.setVisible(true);
             int endWeek = Integer.parseInt(dialog3.getName());
-            
+
             try {
-        Map<String, Double> availableEmployees = system.getAvailableEmployees(project, startWeek, endWeek);
-        
-        List<Map.Entry<String, Double>> sortedEmployees = new ArrayList<>(availableEmployees.entrySet());
-        sortedEmployees.sort(Map.Entry.comparingByValue());
-        for (Map.Entry<String, Double> entry : sortedEmployees) {
-            txtarea.append("Employee: " + entry.getKey() + ", Hours registered: " + entry.getValue() + "\n");
-        }
+                Map<String, Double> availableEmployees = system.getAvailableEmployees(project, startWeek, endWeek);
+
+                List<Map.Entry<String, Double>> sortedEmployees = new ArrayList<>(availableEmployees.entrySet());
+                sortedEmployees.sort(Map.Entry.comparingByValue());
+                for (Map.Entry<String, Double> entry : sortedEmployees) {
+                    txtarea.append("Employee: " + entry.getKey() + ", Hours registered: " + entry.getValue() + "\n");
+                }
             } catch (Exception ee) {
                 System.out.println("An error occurred: " + ee.getMessage());
                 txtarea.append(ee.getMessage() + "\n");
@@ -528,35 +478,33 @@ public class UiClass extends JFrame implements ActionListener {
         else if (actionEvent.getSource() == bSetActivityHourBudget) {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    JFrame frame = new JFrame();
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Cancel");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
+                    if (name1 == null) {
+                        return;
+                    }
 
-                    JFrame frame2 = new JFrame();
-                    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Cancel");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
+                    if (name2 == null) {
+                        return;
+                    }
 
-                    JFrame frame3 = new JFrame();
-                    frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter a budget in hours", "Enter", "Cancel");
                     dialog3.setVisible(true);
                     int intValue = Integer.parseInt(dialog3.getName());
-                    if (name1 != null) {
-                        if (name2 != null) {
-                                try {
-                                    system.setActivityHourBudget(name1, name2, intValue);
-                                    txtarea.append("Activity: " + name2 + " from project " + name1
-                                            + " now has a budget of " + intValue + "\n");
-                                } catch (Exception e) {
-                                    System.out.println(e.getMessage());
-                                    txtarea.append(e.getMessage() + "\n");
-                                }
-                        }
+                    try {
+                        system.setActivityHourBudget(name1, name2, intValue);
+                        txtarea.append("Activity: " + name2 + " from project " + name1
+                                + " now has a budget of " + intValue + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
+
+
                 }
             });
         }
