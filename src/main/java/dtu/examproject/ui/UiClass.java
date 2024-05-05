@@ -1,3 +1,8 @@
+package dtu.examproject.ui;
+
+import dtu.examproject.main.Activity;
+import dtu.examproject.main.TimeRegistration;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
