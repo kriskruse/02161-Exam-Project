@@ -20,6 +20,7 @@ Scenario: User does not exist
 Scenario: User gets 0 registered time
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system
+    And the user is a member of project "Project 1" and activity "Activity 1"
     And the user sets their hours spent today on activity "Activity 1" for project "Project 1" to 0 hours
     When the user requests their registered time
     Then 0 hours is returned
