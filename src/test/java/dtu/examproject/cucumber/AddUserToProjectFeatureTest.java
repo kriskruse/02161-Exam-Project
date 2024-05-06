@@ -73,4 +73,13 @@ public class AddUserToProjectFeatureTest {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
+
+    @When("the user tries to associate a user with a project")
+    public void theUserTriesToAssociateAUserWithAProject() {
+        try {
+            timeRegistration.addUserToProject("nonexistent", "nonexistent");
+        } catch (Exception e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+    }
 }

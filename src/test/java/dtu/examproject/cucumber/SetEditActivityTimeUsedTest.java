@@ -56,4 +56,13 @@ public class SetEditActivityTimeUsedTest {
     public void theActivityDoesNotExistFor(String activity, String project) {
 
     }
+
+    @When("the user sets {string} to have hours spent today on activity {string} for project {string} equal to {double} hours")
+    public void theUserSetEmployeeHoursSpentOnActivityToHours(String employee, String activity, String project, double hours) {
+        try {
+            timeRegistration.registerHours(project, activity, employee, thisWeek, hours);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
 }

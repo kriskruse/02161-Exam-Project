@@ -1,4 +1,4 @@
-Feature: Get registered time() Systematic Tests - Rasmus Kruger
+Feature: getRegisteredTime() Systematic Tests - Rasmus Kruger
  Description: Systematic tests for the Get registered time() method, as described in the project report.
   Actors: User
 

@@ -2,6 +2,16 @@ Feature: See the distribution of registered hours
   Description: The user tries to see the distribution of registered hours on a project per activity. They get an error if they are not the project lead.
   Actors: User
 
+  Scenario: User is not logged in and tries to get hour distribution
+    Given the user is not logged into the system
+    When the user gets hour distribution for project "Project 1"
+    Then the error message "User is not logged in" is given
+
+  Scenario: project does not exist
+    Given the user is logged into the system
+    When the user gets hour distribution for project "Project 1"
+    Then the error message "Project does not exist" is given
+
   Scenario: The user is a project lead for a project with registered time and tries to get hour registration
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system

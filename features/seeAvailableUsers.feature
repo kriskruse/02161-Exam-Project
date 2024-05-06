@@ -2,6 +2,7 @@ Feature: See available users
   Description: The project leader checks which workers are available
   Actors: User
 
+
   Scenario: The project leader attempts to see available employees
     Given the user is logged into the system
     And a project "Project 1" with activity "Activity 1" exists in the system

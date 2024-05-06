@@ -26,7 +26,7 @@ public class SeeAvaliableUsersTest {
     public void theEmployeeIsAssociatedWithActivity(String employee, String activity, String project) {
         try {
             timeRegistration.addUser(employee);
-            timeRegistration.associateEmployeeWithActivity(project, activity, employee);
+            timeRegistration.addUserToActivity(project, activity, employee);
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

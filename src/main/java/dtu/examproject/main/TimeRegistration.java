@@ -130,15 +130,6 @@ public class TimeRegistration {
         else return getProject(project).getActivity(activity).getEndDate();
     }
 
-    public void associateEmployeeWithActivity(String project, String activity, String user) throws Exception {
-        if (!loggedIn()) throw new Exception("User is not logged in");
-        else if (!userExists(user)) throw new Exception("User does not exist");
-        else if (!projectExists(project)) throw new Exception("Project does not exist");
-        else if (!getProject(project).activityExists(activity)) throw new Exception("Activity does not exist");
-        else getProject(project).addEmployeeToActivity(activity, user);
-
-    }
-
     public Map<String,Double> getAvailableEmployees(String project, int startWeek, int endWeek) throws Exception {
         if (!loggedIn()) throw new Exception("User is not logged in");
         else if (!projectExists(project)) throw new Exception("Project does not exist");
