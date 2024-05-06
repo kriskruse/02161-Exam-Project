@@ -15,7 +15,7 @@ public class UiClass extends JFrame implements ActionListener {
     public static TimeRegistration system = new TimeRegistration();
     // worker buttons
     public JButton bWorkerFunctions, bAddUser, bSetProjectLead, bSelectActivityTimeUsed,
-            bGetRegisteredTime, bAddUserToActivity, bAddActivity, bAddProject;
+            bGetRegisteredTime, bAddUserToActivity, bAddActivity, bAddProject, bChangeUser;
     // project lead buttons
     public JButton bSetActivityHourBudget, bSeeAvalibleUsers, bSeeDistributionOfHours, bSetStartEndTime,
             bSetNewProjectLead;
@@ -23,6 +23,7 @@ public class UiClass extends JFrame implements ActionListener {
     public JTextField txtfld;
     public JLabel txt1, txt2, txtusername;
     public static String username = "placeholder";
+    public static UiClass simplegui;
 
     public UiClass() {
 
@@ -97,6 +98,11 @@ public class UiClass extends JFrame implements ActionListener {
         bSetNewProjectLead.setMaximumSize(btnsize);
         bSetNewProjectLead.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        bChangeUser = new JButton("Change User");
+        bChangeUser.addActionListener(this);
+        bChangeUser.setMaximumSize(btnsize);
+        bChangeUser.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         JPanel p1 = new JPanel();
         p1.setLayout(new BoxLayout(p1, BoxLayout.PAGE_AXIS));
@@ -125,6 +131,8 @@ public class UiClass extends JFrame implements ActionListener {
         p1.add(bSetProjectLead);
         p1.add(Box.createRigidArea(new Dimension(110, 5)));
         p1.add(bAddUser);
+        p1.add(Box.createRigidArea(new Dimension(110, 5)));
+        p1.add(bChangeUser);
         p1.add(Box.createRigidArea(new Dimension(110, 170)));
 
         txtusername = new JLabel("  Signed in as "+username);
@@ -155,10 +163,9 @@ public class UiClass extends JFrame implements ActionListener {
         getContentPane().add(p1, BorderLayout.WEST);
         System.out.print("here now and username is ");
         System.out.println(username);
-        if (username.equals("admn")) {
-            System.out.println("showing admin panel");
-            getContentPane().add(p2, BorderLayout.EAST);
-        }
+
+        System.out.println("showing admin panel");
+        getContentPane().add(p2, BorderLayout.EAST);
 
         txtarea = new JTextArea();
         JScrollPane scrollpane = new JScrollPane(txtarea);
@@ -174,12 +181,28 @@ public class UiClass extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if (actionEvent.getSource() == bWorkerFunctions) {
             System.exit(0);
+        } else if (actionEvent.getSource() == bChangeUser) {
+            system.logout();
+            dialogPanel dialog = new dialogPanel(frame, "Enter username", "Login", "Username (4 characters)");
+            dialog.setVisible(true);
+            String user = dialog.getName();
+            try {
+                system.login("admn");
+                system.addUser(user);
+                system.logout();
+                system.login(user);
+                txtusername.setText("  Signed in as "+user);
+                username = user;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
 
         } else if (actionEvent.getSource() == bAddUser) {
             dialogPanel dialog = new dialogPanel(frame, "Register user", "Enter", "User name (4 characters)");
             dialog.setVisible(true);
             String name = dialog.getName();
-            if (name == null) {
+            if (name == null || name.isEmpty()) {
+                txtarea.append("User name cannot be empty\n");
                 return;
             }
             try {
@@ -195,14 +218,16 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-                    if (name1 == null) {
+                    if (name1 == null || name1.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Employee name cannot be empty\n");
                         return;
                     }
                     try {
@@ -218,21 +243,24 @@ public class UiClass extends JFrame implements ActionListener {
             dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Project name");
             dialog.setVisible(true);
             String p = dialog.getName();
-            if (p == null) {
+            if (p == null || p.isEmpty()) {
+                txtarea.append("Project name cannot be empty\n");
                 return;
             }
 
             dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity name", "Enter", "Activity name");
             dialog2.setVisible(true);
             String a = dialog2.getName();
-            if (a == null) {
+            if (a == null || a.isEmpty()) {
+                txtarea.append("Activity name cannot be empty\n");
                 return;
             }
 
             dialogPanel dialog4 = new dialogPanel(frame, "Enter an employee name", "Enter", "Employee name");
             dialog4.setVisible(true);
             String e = dialog4.getName();
-            if (e == null) {
+            if (e == null || e.isEmpty()) {
+                txtarea.append("Employee name cannot be empty\n");
                 return;
             }
 
@@ -240,6 +268,7 @@ public class UiClass extends JFrame implements ActionListener {
             dialog3.setVisible(true);
             int week = Integer.parseInt(dialog3.getName());
             if (week == 0) {
+                txtarea.append("Week number cannot be zero/empty\n");
                 return;
             }
 
@@ -262,15 +291,16 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-                    if (name != null) {
-                        try {
-                            double time = system.getRegisteredTime(name);
-                            txtarea.append("The user: " + name + " has " + time + " hours registered" + "\n");
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                            txtarea.append(e.getMessage() + "\n");
-                        }
-
+                    if (name == null || name.isEmpty()) {
+                        txtarea.append("Employee name cannot be empty\n");
+                        return;
+                    }
+                    try {
+                        double time = system.getRegisteredTime(name);
+                        txtarea.append("The user: " + name + " has " + time + " hours registered" + "\n");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        txtarea.append(e.getMessage() + "\n");
                     }
                 }
             });
@@ -280,21 +310,24 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter the project the activity belongs to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-                    if (name1 == null) {
+                    if (name1 == null || name1.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter the activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Activity name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog3.setVisible(true);
                     String name3 = dialog3.getName();
-                    if (name3 == null) {
+                    if (name3 == null || name3.isEmpty()) {
+                        txtarea.append("Employee name cannot be empty\n");
                         return;
                     }
                     try {
@@ -314,13 +347,15 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter the project the activity will belong to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-                    if (name1 == null) {
+                    if (name1 == null || name1.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter the name of the activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Activity name cannot be empty\n");
                         return;
                     }
                     try {
@@ -338,7 +373,8 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project name", "Enter", "Project");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-                    if (name == null) {
+                    if (name == null || name.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
                     try {
@@ -359,14 +395,16 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-                    if (name == null) {
+                    if (name == null || name.isEmpty()){
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an employee", "Enter", "Employee name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Employee name cannot be empty\n");
                         return;
                     }
                     try {
@@ -387,24 +425,38 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-                    if (name1 == null) {
+                    if (name1 == null || name1.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
+
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Activity name cannot be empty\n");
                         return;
                     }
+
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter a start week for activity", "Enter", "Start week");
                     dialog3.setVisible(true);
-                    int intValue3 = Integer.parseInt(dialog3.getName());
+                    String dialog3Name = dialog3.getName();
+                    if (dialog3Name == null || dialog3Name.isEmpty()) {
+                        txtarea.append("Start week cannot be empty\n");
+                        return;
+                    }
 
                     dialogPanel dialog4 = new dialogPanel(frame, "Enter an end week for activity", "Enter", "End week");
                     dialog4.setVisible(true);
-                    int intValue4 = Integer.parseInt(dialog4.getName());
+                    String dialog4name = dialog4.getName();
+                    if (dialog4name == null || dialog4name.isEmpty()) {
+                        txtarea.append("End week cannot be empty\n");
+                        return;
+                    }
 
                     try {
+                        int intValue3 = Integer.parseInt(dialog3Name);
+                        int intValue4 = Integer.parseInt(dialog4name);
                         system.setActivityStart(name1, name2, intValue3);
                         system.setActivityEnd(name1, name2, intValue4);
                         txtarea.append("Activity: " + name2 + " starts " + intValue3 + " and ends "
@@ -418,14 +470,13 @@ public class UiClass extends JFrame implements ActionListener {
         }
 
         else if (actionEvent.getSource() == bSeeDistributionOfHours) {
-
-
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     dialogPanel dialog = new dialogPanel(frame, "Enter a project", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name = dialog.getName();
-                    if (name == null) {
+                    if (name == null || name.isEmpty()) {
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
                     Map<Activity, Double> hourDistributionMap;
@@ -450,16 +501,30 @@ public class UiClass extends JFrame implements ActionListener {
             dialogPanel dialog = new dialogPanel(frame, "What project would you like to see hour distribution for", "Enter", "Project name");
             dialog.setVisible(true);
             String project = dialog.getName();
+            if (project == null || project.isEmpty()){
+                txtarea.append("Project name cannot be empty\n");
+                return;
+            }
 
             dialogPanel dialog2 = new dialogPanel(frame, "From what week", "Enter", "Start week");
             dialog2.setVisible(true);
-            int startWeek = Integer.parseInt(dialog2.getName());
+            String dialog2name = dialog2.getName();
+            if (dialog2name == null || dialog2name.isEmpty()){
+                txtarea.append("Project name cannot be empty\n");
+                return;
+            }
 
             dialogPanel dialog3 = new dialogPanel(frame, "To what week", "Enter", "End week");
             dialog3.setVisible(true);
-            int endWeek = Integer.parseInt(dialog3.getName());
+            String dialog3name = dialog3.getName();
+            if (dialog3name == null || dialog3name.isEmpty()){
+                txtarea.append("Project name cannot be empty\n");
+                return;
+            }
 
             try {
+                int startWeek = Integer.parseInt(dialog2name);
+                int endWeek = Integer.parseInt(dialog3name);
                 Map<String, Double> availableEmployees = system.getAvailableEmployees(project, startWeek, endWeek);
 
                 List<Map.Entry<String, Double>> sortedEmployees = new ArrayList<>(availableEmployees.entrySet());
@@ -479,21 +544,28 @@ public class UiClass extends JFrame implements ActionListener {
                     dialogPanel dialog = new dialogPanel(frame, "What project does the activity belong to", "Enter", "Project name");
                     dialog.setVisible(true);
                     String name1 = dialog.getName();
-                    if (name1 == null) {
+                    if (name1 == null || name1.isEmpty()){
+                        txtarea.append("Project name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog2 = new dialogPanel(frame, "Enter an activity", "Enter", "Activity name");
                     dialog2.setVisible(true);
                     String name2 = dialog2.getName();
-                    if (name2 == null) {
+                    if (name2 == null || name2.isEmpty()) {
+                        txtarea.append("Activity name cannot be empty\n");
                         return;
                     }
 
                     dialogPanel dialog3 = new dialogPanel(frame, "Enter a budget in hours", "Enter", "Hours");
                     dialog3.setVisible(true);
-                    int intValue = Integer.parseInt(dialog3.getName());
+                    String dialoginput = dialog3.getName();
+                    if (dialoginput == null || dialoginput.isEmpty()) {
+                        txtarea.append("Budget cannot be empty\n");
+                        return;
+                    }
                     try {
+                        int intValue = Integer.parseInt(dialoginput);
                         system.setActivityHourBudget(name1, name2, intValue);
                         txtarea.append("Activity: " + name2 + " from project " + name1
                                 + " now has a budget of " + intValue + "\n");
@@ -509,13 +581,14 @@ public class UiClass extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        UiClass simplegui = new UiClass();
+        simplegui = new UiClass();
+        simplegui.setTitle("Project Registration Software");
+        simplegui.setSize(900, 600);
+        simplegui.setResizable(false);
+        simplegui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         showLoginDialog(simplegui);
         System.out.println("ok starting now");
-        simplegui.setTitle("SimpleGui"); // Set title on window
-        simplegui.setSize(800, 600); // Set size
-        simplegui.setResizable(false); // Allow the window to be resized
-        simplegui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // simplegui.setVisible(true);
 
     }
@@ -531,11 +604,8 @@ public class UiClass extends JFrame implements ActionListener {
         ActionListener loginAction = e -> {
             username = textField.getText();
             parent.dispose();
-            UiClass simplegui = new UiClass();
-            simplegui.setTitle("Project Registration Software");
-            simplegui.setSize(900, 600);
-            simplegui.setResizable(false);
-            simplegui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            simplegui.txtusername.setText("  Signed in as "+username);
+            simplegui.update(simplegui.getGraphics());
             simplegui.setVisible(true);
             JOptionPane.showMessageDialog(simplegui, "Logged in as: " + username);
             try {
@@ -556,12 +626,10 @@ public class UiClass extends JFrame implements ActionListener {
 
         JOptionPane.showMessageDialog(parent, panel, "Log In", JOptionPane.PLAIN_MESSAGE);
     }
-
     public class dialogPanel extends JDialog{
         private JTextField nameField;
         private JButton okButton;
         private String name;
-
         public dialogPanel(Frame parent, String title, String btnText, String labelText) {
             super(parent, title, true);
             JPanel panel = new JPanel(new BorderLayout());
@@ -574,7 +642,6 @@ public class UiClass extends JFrame implements ActionListener {
                     dispose(); // Close the dialog
                 }
             });
-
             nameField.addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyPressed(KeyEvent e) {
