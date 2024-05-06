@@ -44,4 +44,13 @@ public class GetRegisteredTimeTest {
         }
 
     }
+
+    @When("the user requests the user {string} registered time")
+    public void theUserRequestsTheUserRegisteredTime(String user) {
+        try {
+            this.hours = timeRegistration.getRegisteredTime(user);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
 }
