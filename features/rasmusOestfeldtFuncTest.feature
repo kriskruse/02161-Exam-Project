@@ -21,7 +21,7 @@ Scenario: User Creates Project
 
 Scenario: User Creates Project and other projects also exist
   Given the user is logged into the system
-  and a project "proj0" already exist in the system
+  And a project "proj0" already exist in the system
   And a project "proj1" already does not exist in the system
   When the user creates the project "Proj1"
   Then project "Proj1" is created
