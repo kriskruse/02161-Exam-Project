@@ -26,14 +26,6 @@ public class TimeRegistration {
     public String getActiveUser() {return activeUser;}
 
 
-    public List<String> getProjectNameList() {
-        List<String> projectNames = new ArrayList<>();
-        for (Project p : projectList){
-            projectNames.add(p.getProjectName());
-        }
-        return projectNames;
-    }
-
     public void registerHours(String projectName, String activityName,
                               String employee, int week, double hours) throws Exception {
         // change precision of calendar object to day
@@ -96,10 +88,6 @@ public class TimeRegistration {
         else if (!userExists(user)) throw new Exception("User does not exist");
         else if (!projectExists(projectName)) throw new Exception("Project does not exist");
         else getProject(projectName).addEmployeeToActivity(activityName, user);
-    }
-
-    public Boolean userIsAssociatedWithProject(String projectName, String user) {
-        return getProject(projectName).isAssociated(user);
     }
 
     public Boolean userIsAssociatedWithActivity(String projectName, String activityName, String user) {
@@ -181,10 +169,4 @@ public class TimeRegistration {
         }
     }
 
-    public Set<String> getAssociatedEmployees(String project) throws Exception {
-        if (!loggedIn()) throw new Exception("User is not logged in");
-        else if (!projectExists(project)) throw new Exception("Project does not exist");
-        else if (!Objects.equals(activeUser, getProject(project).getProjectLead())) throw new Exception("User does not have the required permissions to do that");
-        return getProject(project).getAssociatedEmployees();
-    }
 }

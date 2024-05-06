@@ -21,7 +21,6 @@ public class Project {
         this.activities.add(new Activity(vacation));
     }
 
-    public Set<String> getAssociatedEmployees() {return associatedEmployees;}
     public String getProjectName() {return this.projectName;}
     public String getProjectLead() {return this.projectLead;}
     public void setProjectLead(String projectLead) {this.projectLead = projectLead;}
@@ -29,7 +28,6 @@ public class Project {
     public Activity getActivity(String activityName) {return activities.stream().filter(a -> a.getTitle().equals(activityName)).findFirst().get();}
     public Boolean isAssociated(String employee) {return associatedEmployees.contains(employee);}
     public List<Activity> getActivities() {return activities;}
-    public String getProjectID() {return projectID;}
 
     public void registerHours(String activityName, String employee, Calendar date, double hours) throws Exception {
         if (!activityExists(activityName))

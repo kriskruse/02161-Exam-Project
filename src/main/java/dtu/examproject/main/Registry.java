@@ -13,9 +13,7 @@ public Registry(String employee, Calendar date, double hours) {
         this.hours = hours;
     }
 
-    public void setEmployee(String employee) {this.employee = employee;}
     public String getEmployee() {return this.employee;}
-    public void setDate(Calendar date) {this.date = date;}
     public Calendar getDate() {return this.date;}
     public void setHours(double hours) {this.hours = hours;}
     public double getHours() {return this.hours;}

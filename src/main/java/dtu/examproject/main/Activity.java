@@ -34,10 +34,6 @@ public class Activity {
     public Boolean hasRegisteredHours(Calendar date, String user) {
         return registeredHours.stream().anyMatch(r -> r.getDate().equals(date) && r.getEmployee().equals(user));}
 
-    public Boolean hasAnyRegisteredHours(String user) {
-        return registeredHours.stream().anyMatch(r -> r.getEmployee().equals(user));
-    }
-
     public void registerHours(String employee, Calendar date, double hours) throws Exception {
         if (!associatedEmployees.contains(employee))
             throw new Exception("Employee is not associated with this activity");

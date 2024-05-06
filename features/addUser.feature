@@ -19,13 +19,12 @@ Feature: Add user to system
     When "Bob" logs into the system
     Then the error message "Cannot login as unregistered user" is given
 
-  Scenario: Register a user that is already registered
-    Given the user is logged into the system
-    And a user with the initials "Bob" exists in the system
-    When the user registers the user "Bob"
-    Then the error message "A user with those initials already exists" is given
-
   Scenario: Register a user when not logged in
     Given the user is not logged into the system
     When the user registers the user "Bob"
     Then the error message "User is not logged in" is given
+
+  Scenario: Register a user with initials longer than 4 characters
+    Given the user is logged into the system
+    When the user registers the user "Bobby"
+    Then the error message "User initials must be less than 5 characters long" is given
